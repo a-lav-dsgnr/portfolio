@@ -1,0 +1,94 @@
+.page {
+  padding-top: 80px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 520px;
+}
+
+.bio p {
+  font-size: 15px;
+  color: var(--fg-muted);
+  line-height: 1.75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.blockTitle {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.listName {
+  font-size: 14px;
+  font-weight: 450;
+  color: var(--fg);
+}
+
+.listMeta {
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.skillItem {
+  font-size: 14px;
+  color: var(--fg-muted);
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

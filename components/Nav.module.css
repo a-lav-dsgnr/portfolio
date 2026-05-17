@@ -1,0 +1,40 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.name:hover {
+  color: var(--fg-muted);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  font-size: 14px;
+  color: var(--fg-muted);
+}
+
+.nav a:hover {
+  color: var(--fg);
+}

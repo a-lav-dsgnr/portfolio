@@ -1,0 +1,157 @@
+.page {
+  padding-top: 80px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0 16px;
+  align-items: baseline;
+}
+
+.metaKey {
+  font-size: 13px;
+  color: var(--fg-subtle);
+}
+
+.metaValue {
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  font-size: 12px;
+  color: var(--fg-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 7px;
+}
+
+/* Hero */
+.heroWrap {
+  margin-top: 40px;
+  background: var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.heroImg {
+  width: 100%;
+  display: block;
+}
+
+/* Summary */
+.summary {
+  margin-top: 32px;
+  font-size: 15px;
+  color: var(--fg-muted);
+  line-height: 1.75;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Content blocks */
+.block {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.block:last-child {
+  border-bottom: none;
+}
+
+.blockInner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.blockHeading {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.blockBody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bodyText {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.75;
+}
+
+.bodyText strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+/* Bullets */
+.bulletList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 18px;
+}
+
+.bulletItem {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.7;
+}
+
+.bulletItem strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+/* Images inside blocks */
+.imageWrap {
+  background: var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.image {
+  width: 100%;
+  display: block;
+}

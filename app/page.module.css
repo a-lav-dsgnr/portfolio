@@ -1,0 +1,208 @@
+.page {
+  padding-top: 80px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+/* ── HERO ── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--border);
+  flex-shrink: 0;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatarInitials {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.role {
+  font-size: 15px;
+  color: var(--fg-muted);
+}
+
+.bio {
+  font-size: 15px;
+  color: var(--fg-muted);
+  line-height: 1.75;
+  max-width: 480px;
+}
+
+.bio a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+
+.bio a:hover {
+  color: var(--fg-muted);
+}
+
+/* ── SECTION ── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  scroll-margin-top: 72px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+/* ── WORK ── */
+.projectList {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectItem {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+  color: var(--fg);
+  transition: opacity 0.15s;
+}
+
+.projectItem:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.projectItem:hover {
+  opacity: 0.55;
+}
+
+.projectItem > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.projectName {
+  font-size: 15px;
+  font-weight: 450;
+}
+
+.projectRole {
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.projectYear {
+  font-size: 13px;
+  color: var(--fg-subtle);
+  flex-shrink: 0;
+}
+
+/* ── ABOUT ── */
+.aboutGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.aboutText {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 480px;
+}
+
+.aboutText p {
+  font-size: 15px;
+  color: var(--fg-muted);
+  line-height: 1.75;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.photoSlot {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--border);
+}
+
+.photoImg {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.photoSlot:hover .photoImg {
+  transform: scale(1.04);
+}
+
+/* ── CONTACT ── */
+.contactBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contactSubtitle {
+  font-size: 15px;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+.contactLinks {
+  display: flex;
+  gap: 24px;
+}
+
+.contactLink {
+  font-size: 14px;
+  color: var(--fg-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+
+.contactLink:hover {
+  color: var(--fg);
+}

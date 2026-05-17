@@ -1,0 +1,17 @@
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--fg);
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+
+.btn:hover {
+  color: var(--fg-muted);
+}

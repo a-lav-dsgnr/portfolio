@@ -1,0 +1,21 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0 48px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 13px;
+  color: var(--fg-subtle);
+}
+
+.signature {
+  height: 48px;
+  width: auto;
+  color: var(--fg-subtle);
+}
