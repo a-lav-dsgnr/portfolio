@@ -3,7 +3,6 @@
   top: 0;
   z-index: 10;
   background-color: var(--bg);
-  border-bottom: 1px solid var(--border);
 }
 
 .inner {
@@ -11,6 +10,12 @@
   align-items: center;
   justify-content: space-between;
   height: 56px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.bordered {
+  border-bottom-color: var(--border);
 }
 
 .name {
@@ -18,6 +23,7 @@
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--fg);
+  transition: color 0.15s;
 }
 
 .name:hover {
@@ -33,6 +39,7 @@
 .nav a {
   font-size: 14px;
   color: var(--fg-muted);
+  transition: color 0.15s;
 }
 
 .nav a:hover {

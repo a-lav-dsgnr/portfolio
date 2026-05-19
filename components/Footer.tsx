@@ -58,7 +58,11 @@ export default function Footer() {
   return (
     <footer ref={footerRef} className={styles.footer}>
       <div className={`container ${styles.inner}`}>
-        <span className={styles.label}>ana.lav</span>
+        <div className={styles.links}>
+          <a href="mailto:a.lav.dsgnr@gmail.com" className={styles.link}>Email</a>
+          <a href="https://linkedin.com/in/your-handle" target="_blank" rel="noopener noreferrer" className={styles.link}>LinkedIn</a>
+          <a href="/resume.pdf" className={styles.link}>Resume</a>
+        </div>
         <svg
           className={styles.signature}
           viewBox="0 0 141 124"
