@@ -12,15 +12,130 @@ export type ProjectBlock = {
 export type Project = {
   slug: string;
   name: string;
-  year: string;
   industry: string;
   featureTypes: string[];
+  year: string;
   summary: string;
   heroImage?: string;
   blocks: ProjectBlock[];
 };
 
 export const projects: Project[] = [
+  {
+    slug: "command-bar",
+    name: "Command Panel",
+    industry: "B2B Lending • Fintech",
+    featureTypes: ["From Scratch", "Optimization"],
+    year: "2025",
+    heroImage: "/Command Panel.jpg",
+    summary:
+      "A keyboard-first command interface that lets lending teams find deals and run AI agents without leaving their current screen.",
+    blocks: [
+      {
+        heading: "",
+        sections: [
+          {
+            type: "text",
+            content:
+              "Command panel has become the single point of access for managing deals and has laid the foundation for an agent-centric product development strategy.",
+          },
+          {
+            type: "text",
+            content:
+              "Search has become faster and more flexible, as searching for a deal no longer requires an exact string match. Instead, a query by company name, email, or phone number finds the desired deal anywhere on the platform. AI agents now also operate within the product, so automated processes that were previously performed in external tools are launched with a command, without changing context or leaving the current screen.",
+          },
+        ],
+      },
+      {
+        heading: "Problem",
+        sections: [
+          {
+            type: "text",
+            content:
+              "Funding advisors and underwriters spent their days context-switching between deals and running repetitive manual processes — collecting documents, submitting files to lenders, triggering compliance checks.",
+          },
+          {
+            type: "text",
+            content:
+              "Finding a specific deal required navigating through multiple screens. Starting an automated process meant leaving the platform entirely. The most routine parts of the job were also the most indirect, and that overhead added up across a full workday.",
+          },
+        ],
+      },
+      {
+        heading: "What I designed",
+        sections: [
+          {
+            type: "text",
+            content:
+              "My goal was to bring these actions into a single surface — so advisors could complete routine tasks without navigating across screens, leaving the platform, or interrupting their current work.",
+          },
+          {
+            type: "subsection",
+            title: "Semantic deal search.",
+            content:
+              "A user opens the bar and types a query — business name, email, phone number. Results are ranked by relevance and capped so the list stays scannable. Typing / explicitly primes search mode, with a clear visual shift so the user knows what the bar will do next. Selecting a result navigates straight to the deal.",
+          },
+          {
+            type: "subsection",
+            title: "AI agent triggering.",
+            content:
+              "Typing @ surfaces available agents; typing after it filters the list. Once an agent is picked, everything the user types on the same line is captured as a free-text instruction for that agent. On a deal page, the bar proactively suggests agents relevant to that deal. The agent's response comes back as text inside the bar itself — no new screen, no redirect.",
+          },
+          {
+            type: "subsection",
+            title: "Session history sidebar.",
+            content:
+              "A persistent, collapsible sidebar lists past sessions in chronological order, so users can resume or reference earlier work without losing their current train of thought. It collapses to give the conversation full focus, and adapts to narrow viewports. I designed every state — loading, empty for new users, error when history fails to load, and the populated list with active and hover states.",
+          },
+        ],
+      },
+      {
+        heading: "Key decisions",
+        sections: [
+          {
+            type: "subsection",
+            title: "One bar, two modes.",
+            content:
+              "Search and automation share a single interface instead of living as two separate tools. The bar reads intent from what the user types and shifts mode accordingly. One entry point means one thing to learn and one place to go — the user doesn't decide which tool before they decide what they need.",
+          },
+          {
+            type: "subsection",
+            title: "/ and @ as mode triggers.",
+            content:
+              "I borrowed the symbol-trigger pattern from messaging tools — / for search, @ for agents. Lending teams already use these symbols daily in Slack, so the interaction needed no explanation. The familiarity did the onboarding work for free.",
+          },
+          {
+            type: "subsection",
+            title: "Free-text parameters on one line.",
+            content:
+              "After an agent is named, the rest of the line is captured as a plain-language instruction — @Ted Placer submit deal to lender [link]. I chose this over a structured form because it matches how people already write commands in chat: one continuous line, no fields to tab through, no modal to fill in.",
+          },
+          {
+            type: "subsection",
+            title: "Contextual agent suggestions.",
+            content:
+              "When the bar is opened on a deal page, it suggests agents relevant to that deal before the user types anything. The user's current context is a strong signal of intent — surfacing the likely next action removes a search step entirely.",
+          },
+          {
+            type: "subsection",
+            title: "Transient states for agent processing.",
+            content:
+              "Agents take time to respond, so the bar needed an honest in-between state. A transient message — \"Contacting the agent…\" — holds the moment, stays visible if processing runs long, and is replaced by the response when it arrives. Without it, a working bar would look like a frozen one.",
+          },
+        ],
+      },
+      {
+        heading: "Reflection",
+        sections: [
+          {
+            type: "text",
+            content:
+              "The most useful lesson from this project: a command interface succeeds on familiarity, not on features. The strongest decisions weren't new inventions — they were patterns users already knew from Slack and modern AI tools, brought into a context where they hadn't existed before. Designing from scratch meant I could have built something clever; what worked was building something the user could already use without being taught.",
+          },
+        ],
+      },
+    ],
+  },
   {
     slug: "online-checkout",
     name: "Online Checkout",

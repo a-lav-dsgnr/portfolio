@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import styles from "./page.module.css";
+import ImageLightbox from "@/components/ImageLightbox";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -28,10 +29,6 @@ export default async function ProjectPage({ params }: Props) {
         <h1 className={styles.title}>{project.name}</h1>
         <dl className={styles.meta}>
           <div className={styles.metaRow}>
-            <dt className={styles.metaKey}>Year</dt>
-            <dd className={styles.metaValue}>{project.year}</dd>
-          </div>
-          <div className={styles.metaRow}>
             <dt className={styles.metaKey}>Industry</dt>
             <dd className={styles.metaValue}>{project.industry}</dd>
           </div>
@@ -39,34 +36,32 @@ export default async function ProjectPage({ params }: Props) {
             <div className={styles.metaRow}>
               <dt className={styles.metaKey}>Type</dt>
               <dd className={styles.metaValue}>
-                <span className={styles.tagList}>
-                  {project.featureTypes.map((t) => (
-                    <span key={t} className={styles.tag}>
-                      {t}
-                    </span>
-                  ))}
-                </span>
+                {project.featureTypes.join(" · ")}
               </dd>
             </div>
           )}
+          <div className={styles.metaRow}>
+            <dt className={styles.metaKey}>Year</dt>
+            <dd className={styles.metaValue}>{project.year}</dd>
+          </div>
         </dl>
       </header>
 
       {/* Hero image */}
       {project.heroImage && (
-        <div className={styles.heroWrap}>
-          <img src={project.heroImage} alt={`${project.name} hero`} className={styles.heroImg} />
-        </div>
+        <ImageLightbox
+          src={project.heroImage}
+          alt={`${project.name} hero`}
+          className={styles.heroImg}
+          wrapClassName={styles.heroWrap}
+        />
       )}
-
-      {/* Summary */}
-      <p className={styles.summary}>{project.summary}</p>
 
       {/* Content blocks */}
       {project.blocks.map((block) => (
         <section key={block.heading} className={styles.block}>
           <div className={styles.blockInner}>
-            <h2 className={styles.blockHeading}>{block.heading}</h2>
+            {block.heading && <h2 className={styles.blockHeading}>{block.heading}</h2>}
             <div className={styles.blockBody}>
               {block.sections.map((section, i) => {
                 if (section.type === "text") {
