@@ -60,7 +60,7 @@ export default function Footer() {
       <div className={`container ${styles.inner}`}>
         <div className={styles.links}>
           <a href="mailto:a.lav.dsgnr@gmail.com" className={styles.link}>Email</a>
-          <a href="https://linkedin.com/in/your-handle" target="_blank" rel="noopener noreferrer" className={styles.link}>LinkedIn</a>
+          <a href="https://www.linkedin.com/in/anastasiia-lavrentii-207937238/" target="_blank" rel="noopener noreferrer" className={styles.link}>LinkedIn</a>
           <a href="/resume.pdf" className={styles.link}>Resume</a>
         </div>
         <svg

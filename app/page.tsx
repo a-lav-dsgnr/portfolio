@@ -37,7 +37,7 @@ export default function Home() {
             Email
           </a>
           <a
-            href="https://linkedin.com/in/your-handle"
+            href="https://www.linkedin.com/in/anastasiia-lavrentii-207937238/"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.contactLink}

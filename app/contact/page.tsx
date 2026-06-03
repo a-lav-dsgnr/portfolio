@@ -13,8 +13,8 @@ const links = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/your-handle",
-    display: "linkedin.com/in/your-handle",
+    href: "https://www.linkedin.com/in/anastasiia-lavrentii-207937238/",
+    display: "linkedin.com/in/anastasiia-lavrentii-207937238",
   },
   {
     label: "Resume",

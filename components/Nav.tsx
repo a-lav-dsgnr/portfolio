@@ -1,10 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Nav.module.css";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 0);
@@ -19,8 +22,8 @@ export default function Nav() {
           ana.lav
         </Link>
         <nav className={styles.nav}>
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
+          <a href={isHome ? "#work" : "/#work"}>Work</a>
+          <a href={isHome ? "#about" : "/#about"}>About</a>
         </nav>
       </div>
     </header>
