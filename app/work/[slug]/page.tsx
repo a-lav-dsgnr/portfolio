@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
@@ -99,10 +100,22 @@ export default async function ProjectPage({ params }: Props) {
                 }
 
                 if (section.type === "subsection") {
+                  const paragraphs = Array.isArray(section.content)
+                    ? section.content
+                    : [section.content];
                   return (
-                    <p key={i} className={styles.bodyText}>
-                      <strong>{section.title}</strong> {section.content}
-                    </p>
+                    <Fragment key={i}>
+                      {paragraphs.map((paragraph, j) => (
+                        <p key={j} className={styles.bodyText}>
+                          {j === 0 && (
+                            <>
+                              <strong>{section.title}</strong>{" "}
+                            </>
+                          )}
+                          {paragraph}
+                        </p>
+                      ))}
+                    </Fragment>
                   );
                 }
 

@@ -2,7 +2,7 @@ export type ProjectSection =
   | { type: "text"; content: string }
   | { type: "bullets"; intro?: string; items: { bold?: string; text: string }[] }
   | { type: "image"; src: string; alt: string }
-  | { type: "subsection"; title: string; content: string };
+  | { type: "subsection"; title: string; content: string | string[] };
 
 export type ProjectBlock = {
   heading: string;
@@ -77,9 +77,11 @@ export const projects: Project[] = [
           },
           {
             type: "subsection",
-            title: "AI agent triggering.",
-            content:
-              "Typing @ surfaces available agents; typing after it filters the list. Once an agent is picked, everything the user types on the same line is captured as a free-text instruction for that agent. On a deal page, the bar proactively suggests agents relevant to that deal. The agent's response comes back as text inside the bar itself — no new screen, no redirect.",
+            title: "Triggering AI agents",
+            content: [
+              "Users call up agents inline by typing @, which surfaces the full list of available agents. Continuing to type filters that list in real time. Once an agent is selected, any text entered on the same line is captured as a free-text instruction—letting users specify intent in a single, uninterrupted action.",
+              "On a deal page, the bar adapts to context, suggesting agents relevant to that specific deal. The agent replies as a chat thread inside the same panel, keeping users in flow with no new screen or redirect.",
+            ],
           },
           {
             type: "subsection",
