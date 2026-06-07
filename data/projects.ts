@@ -27,7 +27,7 @@ export const projects: Project[] = [
     industry: "B2B Lending • Fintech",
     featureTypes: ["From Scratch", "Optimization"],
     year: "2025",
-    heroImage: "/Command Panel.jpg",
+    heroImage: "/Command-Panel.jpg?v=2",
     summary:
       "A keyboard-first command interface that lets lending teams find deals and run AI agents without leaving their current screen.",
     blocks: [
@@ -39,6 +39,11 @@ export const projects: Project[] = [
             content:
               "Command panel has become the single point of access for managing deals and has laid the foundation for an agent-centric product development strategy.",
           },
+        ],
+      },
+      {
+        heading: "Outcome",
+        sections: [
           {
             type: "text",
             content:
@@ -70,10 +75,20 @@ export const projects: Project[] = [
               "My goal was to bring these actions into a single surface — so advisors could complete routine tasks without navigating across screens, leaving the platform, or interrupting their current work.",
           },
           {
+            type: "image",
+            src: "/Semantic-deal-search.jpg?v=2",
+            alt: "Semantic deal search",
+          },
+          {
             type: "subsection",
             title: "Semantic deal search.",
             content:
               "A user opens the bar and types a query — business name, email, phone number. Results are ranked by relevance and capped so the list stays scannable. Typing / explicitly primes search mode, with a clear visual shift so the user knows what the bar will do next. Selecting a result navigates straight to the deal.",
+          },
+          {
+            type: "image",
+            src: "/triggering-ai-agents.jpg?v=2",
+            alt: "Triggering AI agents",
           },
           {
             type: "subsection",
@@ -82,6 +97,22 @@ export const projects: Project[] = [
               "Users call up agents inline by typing @, which surfaces the full list of available agents. Continuing to type filters that list in real time. Once an agent is selected, any text entered on the same line is captured as a free-text instruction—letting users specify intent in a single, uninterrupted action.",
               "On a deal page, the bar adapts to context, suggesting agents relevant to that specific deal. The agent replies as a chat thread inside the same panel, keeping users in flow with no new screen or redirect.",
             ],
+          },
+          {
+            type: "image",
+            src: "/saved-commands.jpg",
+            alt: "Saved commands",
+          },
+          {
+            type: "subsection",
+            title: "Saved commands",
+            content:
+              "Users often send the same instruction to the same agent over and over, like collecting missing documents for a new deal or routing a file to a specific lender. Retyping the full natural-language request each time turned a fast interaction slow again. I designed a way to save any typed command as a named shortcut from the place where it's written, so a recurring action collapses into a single step.",
+          },
+          {
+            type: "image",
+            src: "/session-history-sidebar.jpg",
+            alt: "Session history sidebar",
           },
           {
             type: "subsection",
@@ -95,10 +126,9 @@ export const projects: Project[] = [
         heading: "Key decisions",
         sections: [
           {
-            type: "subsection",
-            title: "One bar, two modes.",
-            content:
-              "Search and automation share a single interface instead of living as two separate tools. The bar reads intent from what the user types and shifts mode accordingly. One entry point means one thing to learn and one place to go — the user doesn't decide which tool before they decide what they need.",
+            type: "image",
+            src: "/key-decisions-1.jpg",
+            alt: "/ and @ as mode triggers",
           },
           {
             type: "subsection",
@@ -107,16 +137,15 @@ export const projects: Project[] = [
               "I borrowed the symbol-trigger pattern from messaging tools — / for search, @ for agents. Lending teams already use these symbols daily in Slack, so the interaction needed no explanation. The familiarity did the onboarding work for free.",
           },
           {
-            type: "subsection",
-            title: "Free-text parameters on one line.",
-            content:
-              "After an agent is named, the rest of the line is captured as a plain-language instruction — @Ted Placer submit deal to lender [link]. I chose this over a structured form because it matches how people already write commands in chat: one continuous line, no fields to tab through, no modal to fill in.",
+            type: "image",
+            src: "/key-decisions-2.jpg?v=3",
+            alt: "Contextual suggestions",
           },
           {
             type: "subsection",
-            title: "Contextual agent suggestions.",
+            title: "Contextual suggestions",
             content:
-              "When the bar is opened on a deal page, it suggests agents relevant to that deal before the user types anything. The user's current context is a strong signal of intent — surfacing the likely next action removes a search step entirely.",
+              "When the panel is opened on a deal page, the user usually already knows roughly what they want to do, but they shouldn't have to remember the exact agent name or retype a command they've used a dozen times. The panel surfaces both relevant agents and saved commands for the current context before the user types anything, so the likely next action is one keystroke away instead of a search away.",
           },
           {
             type: "subsection",
@@ -132,7 +161,7 @@ export const projects: Project[] = [
           {
             type: "text",
             content:
-              "The most useful lesson from this project: a command interface succeeds on familiarity, not on features. The strongest decisions weren't new inventions — they were patterns users already knew from Slack and modern AI tools, brought into a context where they hadn't existed before. Designing from scratch meant I could have built something clever; what worked was building something the user could already use without being taught.",
+              "The most useful lesson from this project was that a command interface succeeds on familiarity rather than on features. The strongest decisions weren't new inventions but patterns users already knew from Slack and modern AI tools, brought into a context where they hadn't existed before. Designing from scratch meant I could have built something clever, yet what actually worked was building something the user could already use without being taught.",
           },
         ],
       },
