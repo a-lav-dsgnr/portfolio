@@ -1,11 +1,11 @@
 :root {
-  --bg: #ffffff;
-  --fg: #111111;
-  --fg-muted: #666666;
-  --fg-subtle: #999999;
-  --border: #e5e5e5;
-  --link: #111111;
-  --link-hover: #555555;
+  --bg: oklch(1 0 0);
+  --fg: oklch(0.18 0 0);
+  --fg-muted: oklch(0.513 0 0);
+  --fg-subtle: oklch(0.681 0 0);
+  --border: oklch(0.922 0 0);
+  --link: oklch(0.18 0 0);
+  --link-hover: oklch(0.444 0 0);
   --max-width: 600px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
     Arial, sans-serif;
@@ -13,13 +13,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0a0a0a;
-    --fg: #ededed;
-    --fg-muted: #a0a0a0;
-    --fg-subtle: #666666;
-    --border: #222222;
-    --link: #ededed;
-    --link-hover: #a0a0a0;
+    --bg: oklch(0.145 0 0);
+    --fg: oklch(0.946 0 0);
+    --fg-muted: oklch(0.708 0 0);
+    --fg-subtle: oklch(0.513 0 0);
+    --border: oklch(0.269 0 0);
+    --link: oklch(0.946 0 0);
+    --link-hover: oklch(0.708 0 0);
   }
 }
 

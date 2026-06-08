@@ -71,12 +71,24 @@ export default async function ProjectPage({ params }: Props) {
                   const section = block.sections[idx];
                   const next = block.sections[idx + 1];
 
-                  if (section.type === "image" && next?.type === "subsection") {
+                  if ((section.type === "image" || section.type === "video") && next?.type === "subsection") {
                     const paragraphs = Array.isArray(next.content) ? next.content : [next.content];
                     items.push(
                       <div key={idx} className={styles.imageGroup}>
                         <div className={styles.imageWrap}>
-                          <img src={section.src} alt={section.alt} className={styles.image} />
+                          {section.type === "image" ? (
+                            <img src={section.src} alt={section.alt} className={styles.image} />
+                          ) : (
+                            <video
+                              src={section.src}
+                              className={styles.image}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              aria-label={section.alt}
+                            />
+                          )}
                         </div>
                         <Fragment>
                           {paragraphs.map((paragraph, j) => (
@@ -114,6 +126,20 @@ export default async function ProjectPage({ params }: Props) {
                     items.push(
                       <div key={idx} className={styles.imageWrap}>
                         <img src={section.src} alt={section.alt} className={styles.image} />
+                      </div>
+                    );
+                  } else if (section.type === "video") {
+                    items.push(
+                      <div key={idx} className={styles.imageWrap}>
+                        <video
+                          src={section.src}
+                          className={styles.image}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          aria-label={section.alt}
+                        />
                       </div>
                     );
                   } else if (section.type === "subsection") {

@@ -13,11 +13,11 @@ export default function Home() {
         <div className={styles.heroTop}>
           <div className={styles.avatar}>
             <Image
-              src="/avatar1.jpeg"
+              src="/avatar1.jpg"
               alt="Anastasiia Lavrentii"
               fill
               className={styles.photoImg}
-              sizes="52px"
+              sizes="80px"
             />
           </div>
           <div className={styles.identity}>
@@ -26,28 +26,40 @@ export default function Home() {
           </div>
         </div>
         <p className={styles.bio}>
-          I design digital products that feel intuitive and human. Currently
-          open to new opportunities.
+          5+ years across fintech, SaaS, real estate, and food tech, building
+          products that pair strong user experience with clear business
+          outcomes. I work end to end, from research to production-ready UI,
+          and lately I&apos;ve been weaving AI into my process to prototype
+          faster and tighten the loop between design and engineering.
         </p>
         <p className={styles.bio}>
-          Feel free to reach me out through any of these channels.
-        </p>
-        <div className={styles.contactLinks}>
-          <a href="mailto:a.lav.dsgnr@gmail.com" className={styles.contactLink}>
-            Email
+          Always up for a good conversation — drop me an{" "}
+          <a href="mailto:a.lav.dsgnr@gmail.com" className={styles.inlineLink}>
+            <span>email</span>
+            <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </a>
+          , take a look at my{" "}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.inlineLink}
+          >
+            <span>resume</span>
+            <span className={styles.linkArrow} aria-hidden="true">↗</span>
+          </a>
+          , or find me on{" "}
           <a
             href="https://www.linkedin.com/in/anastasiia-lavrentii-207937238/"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.contactLink}
+            className={styles.inlineLink}
           >
-            LinkedIn
+            <span>linkedIn</span>
+            <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </a>
-          <a href="/resume.pdf" className={styles.contactLink}>
-            Resume
-          </a>
-        </div>
+          .
+        </p>
       </section>
 
       {/* ── WORK ── */}

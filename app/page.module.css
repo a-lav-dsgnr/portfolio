@@ -3,7 +3,7 @@
   padding-bottom: 120px;
   display: flex;
   flex-direction: column;
-  gap: 96px;
+  gap: 80px;
 }
 
 /* ── HERO ── */
@@ -15,15 +15,16 @@
 
 .heroTop {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
 }
 
 .avatar {
   position: relative;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -43,7 +44,7 @@
 .identity {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 0;
 }
 
 .name {
@@ -66,14 +67,8 @@
 
 .bio a {
   color: var(--fg);
-  text-decoration: underline;
-  text-decoration-color: var(--border);
-  text-underline-offset: 3px;
+  text-decoration: none;
   transition: color 0.15s;
-}
-
-.bio a:hover {
-  color: var(--fg-muted);
 }
 
 /* ── SECTION ── */
@@ -113,7 +108,7 @@
   border-top: 1px solid var(--border);
 }
 
-.projectItem:hover {
+.projectItem:hover > * {
   opacity: 0.55;
 }
 
@@ -210,4 +205,32 @@
 
 .contactLink:hover {
   color: var(--fg);
+}
+
+.inlineLink {
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.inlineLink > :first-child {
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.inlineLink:hover > :first-child {
+  text-decoration: underline;
+  text-decoration-color: var(--fg);
+}
+
+.linkArrow {
+  display: inline-block;
+  margin-left: 2px;
+  font-size: 0.85em;
+  text-decoration: none;
+  transition: transform 0.15s;
+}
+
+.inlineLink:hover .linkArrow {
+  transform: translate(1px, -1px);
 }

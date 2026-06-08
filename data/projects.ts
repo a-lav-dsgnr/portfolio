@@ -2,6 +2,7 @@ export type ProjectSection =
   | { type: "text"; content: string }
   | { type: "bullets"; intro?: string; items: { bold?: string; text: string }[] }
   | { type: "image"; src: string; alt: string }
+  | { type: "video"; src: string; alt: string; poster?: string }
   | { type: "subsection"; title: string; content: string | string[] };
 
 export type ProjectBlock = {
@@ -146,6 +147,11 @@ export const projects: Project[] = [
             title: "Contextual suggestions",
             content:
               "When the panel is opened on a deal page, the user usually already knows roughly what they want to do, but they shouldn't have to remember the exact agent name or retype a command they've used a dozen times. The panel surfaces both relevant agents and saved commands for the current context before the user types anything, so the likely next action is one keystroke away instead of a search away.",
+          },
+          {
+            type: "video",
+            src: "/transient-states.mov",
+            alt: "Transient states for agent processing",
           },
           {
             type: "subsection",
