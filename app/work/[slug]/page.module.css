@@ -134,7 +134,7 @@
 .imageGroup {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .imageWrap {
@@ -149,4 +149,12 @@
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+.caption {
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.75;
+  margin-top: -4px;
+  margin-bottom: 4px;
 }

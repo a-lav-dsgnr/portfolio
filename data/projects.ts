@@ -2,7 +2,7 @@ export type ProjectSection =
   | { type: "text"; content: string }
   | { type: "bullets"; intro?: string; items: { bold?: string; text: string }[] }
   | { type: "image"; src: string; alt: string }
-  | { type: "video"; src: string; alt: string; poster?: string }
+  | { type: "video"; src: string; alt: string; poster?: string; scale?: number; caption?: string }
   | { type: "subsection"; title: string; content: string | string[] };
 
 export type ProjectBlock = {
@@ -152,6 +152,8 @@ export const projects: Project[] = [
             type: "video",
             src: "/transient-states.mov",
             alt: "Transient states for agent processing",
+            scale: 1.2,
+            caption: "A prototype built with Cursor to show engineers how the chat feature should work.",
           },
           {
             type: "subsection",

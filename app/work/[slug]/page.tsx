@@ -87,9 +87,13 @@ export default async function ProjectPage({ params }: Props) {
                               muted
                               playsInline
                               aria-label={section.alt}
+                              style={section.scale ? { transform: `scale(${section.scale})` } : undefined}
                             />
                           )}
                         </div>
+                        {section.type === "video" && section.caption && (
+                          <p className={styles.caption}>{section.caption}</p>
+                        )}
                         <Fragment>
                           {paragraphs.map((paragraph, j) => (
                             <p key={j} className={styles.bodyText}>
@@ -130,16 +134,22 @@ export default async function ProjectPage({ params }: Props) {
                     );
                   } else if (section.type === "video") {
                     items.push(
-                      <div key={idx} className={styles.imageWrap}>
-                        <video
-                          src={section.src}
-                          className={styles.image}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          aria-label={section.alt}
-                        />
+                      <div key={idx} className={styles.imageGroup}>
+                        <div className={styles.imageWrap}>
+                          <video
+                            src={section.src}
+                            className={styles.image}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            aria-label={section.alt}
+                            style={section.scale ? { transform: `scale(${section.scale})` } : undefined}
+                          />
+                        </div>
+                        {section.caption && (
+                          <p className={styles.caption}>{section.caption}</p>
+                        )}
                       </div>
                     );
                   } else if (section.type === "subsection") {
