@@ -9,9 +9,15 @@
   text-decoration: underline;
   text-decoration-color: var(--border);
   text-underline-offset: 3px;
-  transition: color 0.15s;
+  font-variant-numeric: tabular-nums;
+  transition-property: color, transform;
+  transition-duration: 0.15s;
 }
 
 .btn:hover {
   color: var(--fg-muted);
+}
+
+.btn:active {
+  transform: scale(0.96);
 }

@@ -21,7 +21,8 @@
   text-decoration: underline;
   text-decoration-color: var(--border);
   text-underline-offset: 3px;
-  transition: color 0.15s;
+  transition-property: color;
+  transition-duration: 0.15s;
 }
 
 .link:hover {

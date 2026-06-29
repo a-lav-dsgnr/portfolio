@@ -176,62 +176,51 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "online-checkout",
-    name: "Online Checkout",
-    year: "2024",
-    industry: "B2B Lending Platform",
-    featureTypes: ["From Scratch", "Optimization"],
+    slug: "data-orchestration",
+    name: "Data Orchestration Outcome",
+    year: "2025",
+    industry: "B2B Lending • Fintech",
+    featureTypes: ["Redesign", "Research-led"],
     summary:
-      "A configurable checkout flow built into the Borrower Platform — giving lenders a single place to define and manage the closing process, and borrowers a single place to complete it.",
+      "The Data Orchestration screen now leads with the answer instead of the data, and disappears when nothing is wrong.",
     blocks: [
+      {
+        heading: "",
+        sections: [
+          {
+            type: "text",
+            content:
+              "The Data Orchestration screen now leads with the answer instead of the data, and disappears when nothing is wrong.",
+          },
+        ],
+      },
       {
         heading: "Outcome",
         sections: [
           {
             type: "text",
-            content: "The closing process moved inside the product for the first time.",
-          },
-          {
-            type: "bullets",
-            items: [
-              { bold: "42%", text: " faster time-to-fund" },
-              { bold: "30%", text: " higher offer acceptance rate" },
-              { bold: "25%", text: " fewer support tickets" },
-              { bold: "50%+", text: " reduction in steps that previously required manual intervention from the ops team" },
-              { text: "Fewer errors, revisions, and missing documents" },
-              { text: "Ops teams gained real-time visibility into checkout progress per deal" },
-            ],
+            content:
+              "The redesigned Data Orchestration screen surfaces the failure category and the exact attributes that triggered it before anything else, replaces the dense vertical block with a compact row of data-provider cards aligned to the rest of the deal view, and goes quiet when a check passes cleanly. In four validation interviews with funding advisors and underwriters, the new layout was confirmed to match how users actually read a failed deal — failure-first, source by source, attribute by attribute. The redesign was approved for development with no major revisions.",
           },
         ],
       },
       {
-        heading: "The problem",
+        heading: "Problem",
         sections: [
           {
             type: "text",
             content:
-              "After accepting a loan offer, borrowers had no unified place to complete the closing process. Lenders managed it through email threads, external links, and manual follow-ups. Nothing was trackable inside the product. The most critical stage of the deal was invisible.",
+              "Funding advisors and underwriters opened a deal and were met with a wall of orchestration data they mostly couldn't use. The block sat at the top of the underwriting stage and showed every condition by default, even when most of them had clearly passed. Reading the screen took effort that didn't translate into faster decisions, and explaining it to a new team member took longer than the actual review.",
           },
-        ],
-      },
-      {
-        heading: "Discovery",
-        sections: [
           {
             type: "text",
-            content: "I joined after the problem had been scoped. Before starting design, I focused on two things.",
+            content:
+              "To understand what specifically was costing time, I ran interviews with four users across the two main roles. Four patterns held across every conversation. No one could tell what had failed or why, because internal attribute codes like LNK_B_012 carried no meaning outside the engineering team. The heavy block hid the data providers users actually trusted, like Equifax and MoneyThumb, so most users skipped orchestration and verified manually. The same reading instinct came up four times — bottom-up, fail-first, skip the passes. And even when a failure was identified, getting to the relevant attribute or document took several extra clicks through unrelated screens.",
           },
           {
-            type: "subsection",
-            title: "Client interviews (existing notes).",
+            type: "text",
             content:
-              "Checkout flows varied significantly between lenders — some needed 3 steps, others 8+. Signing requirements differed: some had all owners sign, others just one. The process was highly configurable by nature.",
-          },
-          {
-            type: "subsection",
-            title: "Internal ops audit.",
-            content:
-              "I mapped every manual step the ops team performed per deal. Many were triggered by missing info or unclear borrower instructions — problems a well-designed flow could eliminate.",
+              "The screen wasn't broken in a single visible way. It was misaligned with how the work actually happens.",
           },
         ],
       },
@@ -239,22 +228,33 @@ export const projects: Project[] = [
         heading: "What I designed",
         sections: [
           {
-            type: "subsection",
-            title: "Checkout Builder —",
+            type: "text",
             content:
-              "a lender-facing configuration tool. Lenders compose a template from 8 step types, write custom copy, set signing requirements, and preview the borrower-facing result in real time.",
+              "I redesigned the Data Orchestration surface as part of the underwriting deal view, aligning it with how the rest of the verification data is presented and rebuilding the information hierarchy around failure-first reading.",
           },
           {
             type: "subsection",
-            title: "Borrower Platform (web + mobile) —",
+            title: "Compact data-provider layout.",
             content:
-              "the applicant-facing flow. After accepting an offer, borrowers work through the defined steps to close their deal. Steps can be completed in any order. Offer details stay visible throughout.",
+              "The orchestration outcome is no longer a vertical block dominating the screen. It sits as one card in a horizontal row alongside KYB, Bank Data, Personal Credit, Match, and CFA — the same data providers users were already navigating to verify failures manually. The full check log is one click away when needed and invisible when not.",
           },
           {
             type: "subsection",
-            title: "Ops view —",
+            title: "Failure banner with linked attributes.",
             content:
-              "a deal-level panel for funding advisors. Shows checkout progress step by step, with the content of each step — documents, signatures, collected data — visible on click.",
+              "When a check fails, a banner names the failed category and lists the specific attributes that triggered it, with each attribute as a direct link to its row in the section below. The user starts with the answer and one click takes them to the evidence — date, time, expected value, returned value.",
+          },
+          {
+            type: "subsection",
+            title: "Filter chips and search.",
+            content:
+              "A row of source-based filter chips sits above the category list, alongside a search field for finding a specific attribute by name. Users moving between sources can narrow the view in one click without changing tabs or screens.",
+          },
+          {
+            type: "subsection",
+            title: "Minimal pass state.",
+            content:
+              "When orchestration completes without failures, the surface goes quiet. Cards show their statuses, categories collapse to a single row each, the banner disappears. The screen confirms the work was done but stops asking for attention it doesn't need.",
           },
         ],
       },
@@ -263,21 +263,33 @@ export const projects: Project[] = [
         sections: [
           {
             type: "subsection",
-            title: "Live preview panel.",
+            title: "Heavy block to compact provider cards.",
             content:
-              "As lenders build their template, the right half of the screen shows the borrower-facing output in real time. Every change is immediately visible — no separate preview mode, no guesswork about how the configuration translates to the borrower experience.",
+              "The original orchestration outcome lived as a tall, dense vertical block at the top of the underwriting stage — the first thing every user saw on every deal, even when nothing about it was actionable. Three of the four interview participants independently said they scrolled past it most of the time. I broke the block into a horizontal row of compact cards aligned with the other data providers, so orchestration is now visually peer to KYB, Bank Data, and the rest rather than gating them. This single change does most of the work, because it removes the screen's biggest signal — that something here demands your attention — except when there is.",
           },
           {
             type: "subsection",
-            title: "Collapse / expand steps.",
+            title: "A banner that names the failure.",
             content:
-              "Each step in the Builder is collapsed by default; clicking expands the detail. This keeps the overall structure visible at a glance while allowing focused editing of individual steps.",
+              "When a category fails, the banner at the top names which category, lists the specific failed attributes, and surfaces additional attributes in an expandable list when there are more than two. The user starts at the answer instead of hunting for it across collapsed categories. This decision came directly from how Sebastian and Christian described their workflow — they always wanted to know what failed before they cared about anything else, and the old design buried that answer under everything that had passed.",
           },
           {
             type: "subsection",
-            title: "Any-order completion.",
+            title: "Direct links from the failure to the source.",
             content:
-              "Borrowers can complete steps in any sequence. This reduced drop-off when a required document wasn't immediately available — borrowers could move forward on other steps instead of abandoning.",
+              "Each attribute name in the failure banner is a link straight to its detail row in the section below — full evidence in one click, no scrolling, no searching across collapsed blocks. This was James's most concrete complaint about the old design. He described hunting through multiple documents to find which one triggered a fraud failure, and the redesign collapses that into a single jump.",
+          },
+          {
+            type: "subsection",
+            title: "Per-source filter chips.",
+            content:
+              "Each data source — Application Data, Custom Attributes, Personal Credit, Bank Data, Match — gets its own chip in a row above the category list. Selecting a chip narrows the view to that source without changing screens or losing context. The chips reflect a real pattern from the interviews, where users investigating a failure tend to think in terms of \"what does Equifax say about this\" rather than \"what does the orchestration say.\" The filter restores that mental model.",
+          },
+          {
+            type: "subsection",
+            title: "Minimal pass state.",
+            content:
+              "When orchestration completes without failures, the entire surface goes quiet — no banner, no expanded blocks, no urgency. The old design treated pass and fail with the same visual weight, but the interviews made it clear that users skip the screen entirely when a deal is passing. The new design honors that and frees attention for the deal stages where it actually belongs.",
           },
         ],
       },
@@ -287,12 +299,12 @@ export const projects: Project[] = [
           {
             type: "text",
             content:
-              "This was the most complex flow I had designed up to that point — two user types, a highly configurable system, and a live preview connecting both sides in real time. The hardest part wasn't the UI, it was understanding enough about lending operations to know what flexibility was genuinely needed versus what was edge-case noise.",
+              "The hardest part of this project wasn't designing the new layout — it was figuring out what the layout was actually for. The old screen showed everything because no one had ever asked which parts of \"everything\" users needed and in what order. Four interviews across funding advisors and underwriters made it obvious that the answer was almost the opposite of what the screen was doing — failure-first, source by source, most of the data hidden until requested.",
           },
           {
             type: "text",
             content:
-              "If I were to revisit it, I'd spend more time on the empty state for new lenders — the Builder assumes you know what steps you need, but first-time users don't. A guided setup or a template library would have reduced onboarding friction significantly.",
+              "The lesson I'm taking forward is that information-dense interfaces don't usually fail at the visual level. They fail at the hierarchy level. The fix isn't to make the same content prettier but to ask which content matters in which moment, and then design the surface to mirror that.",
           },
         ],
       },

@@ -44,6 +44,7 @@
 .metaValue {
   font-size: 13px;
   color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 

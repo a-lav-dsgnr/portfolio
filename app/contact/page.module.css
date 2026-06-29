@@ -39,7 +39,8 @@
   border-bottom: 1px solid var(--border);
   gap: 16px;
   color: var(--fg);
-  transition: opacity 0.15s;
+  transition-property: opacity;
+  transition-duration: 0.15s;
 }
 
 .linkItem:first-child {
@@ -58,4 +59,5 @@
 .linkDisplay {
   font-size: 13px;
   color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
 }

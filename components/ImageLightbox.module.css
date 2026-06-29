@@ -3,7 +3,9 @@
 }
 
 .trigger img {
-  transition: opacity 0.2s ease;
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }
 
 .trigger:hover img {

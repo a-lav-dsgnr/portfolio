@@ -68,7 +68,8 @@
 .bio a {
   color: var(--fg);
   text-decoration: none;
-  transition: color 0.15s;
+  transition-property: color;
+  transition-duration: 0.15s;
 }
 
 /* ── SECTION ── */
@@ -101,7 +102,11 @@
   border-bottom: 1px solid var(--border);
   gap: 16px;
   color: var(--fg);
-  transition: opacity 0.15s;
+}
+
+.projectItem > * {
+  transition-property: opacity;
+  transition-duration: 0.15s;
 }
 
 .projectItem:first-child {
@@ -132,6 +137,7 @@
   font-size: 13px;
   color: var(--fg-subtle);
   flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── ABOUT ── */
@@ -169,7 +175,9 @@
 
 .photoImg {
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition-property: transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
 }
 
 .photoSlot:hover .photoImg {
@@ -200,7 +208,8 @@
   text-decoration: underline;
   text-decoration-color: var(--border);
   text-underline-offset: 3px;
-  transition: color 0.15s;
+  transition-property: color;
+  transition-duration: 0.15s;
 }
 
 .contactLink:hover {
@@ -210,7 +219,8 @@
 .inlineLink {
   color: var(--fg);
   text-decoration: none;
-  transition: color 0.15s;
+  transition-property: color;
+  transition-duration: 0.15s;
 }
 
 .inlineLink > :first-child {
@@ -228,7 +238,8 @@
   margin-left: 2px;
   font-size: 0.85em;
   text-decoration: none;
-  transition: transform 0.15s;
+  transition-property: transform;
+  transition-duration: 0.15s;
 }
 
 .inlineLink:hover .linkArrow {
