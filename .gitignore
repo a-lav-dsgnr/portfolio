@@ -18,3 +18,8 @@ npm-debug.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code / agents
+.claude/
+.agents/
+skills-lock.json
