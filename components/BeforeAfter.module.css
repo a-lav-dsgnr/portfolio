@@ -1,0 +1,49 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.imageWrap {
+  background: var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 3px;
+  border-radius: 8px;
+  background: var(--border);
+  gap: 2px;
+}
+
+.toggleBtn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.toggleBtn:hover {
+  color: var(--fg);
+}
+
+.toggleBtnActive,
+.toggleBtnActive:hover {
+  background: var(--bg);
+  color: var(--fg);
+}

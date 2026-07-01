@@ -66,7 +66,7 @@ export default function Home() {
       <section id="work" className={styles.section}>
         <h2 className={styles.sectionTitle}>Selected Work</h2>
         <div className={styles.projectList}>
-          {projects.map((p) => (
+          {[...projects].sort((a, b) => Number(b.year) - Number(a.year)).map((p) => (
             <Link key={p.slug} href={`/work/${p.slug}`} className={styles.projectItem}>
               <div>
                 <span className={styles.projectName}>{p.name}</span>

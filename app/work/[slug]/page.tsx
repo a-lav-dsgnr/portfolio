@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import styles from "./page.module.css";
 import ImageLightbox from "@/components/ImageLightbox";
+import BeforeAfter from "@/components/BeforeAfter";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -125,6 +126,10 @@ export default async function ProjectPage({ params }: Props) {
                           ))}
                         </ul>
                       </div>
+                    );
+                  } else if (section.type === "beforeAfter") {
+                    items.push(
+                      <BeforeAfter key={idx} before={section.before} after={section.after} />
                     );
                   } else if (section.type === "image") {
                     items.push(

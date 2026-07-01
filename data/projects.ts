@@ -3,6 +3,11 @@ export type ProjectSection =
   | { type: "bullets"; intro?: string; items: { bold?: string; text: string }[] }
   | { type: "image"; src: string; alt: string }
   | { type: "video"; src: string; alt: string; poster?: string; scale?: number; caption?: string }
+  | {
+      type: "beforeAfter";
+      before: { src: string; alt: string };
+      after: { src: string; alt: string };
+    }
   | { type: "subsection"; title: string; content: string | string[] };
 
 export type ProjectBlock = {
@@ -178,19 +183,24 @@ export const projects: Project[] = [
   {
     slug: "data-orchestration",
     name: "Data Orchestration Outcome",
-    year: "2025",
+    year: "2026",
     industry: "B2B Lending • Fintech",
-    featureTypes: ["Redesign", "Research-led"],
+    featureTypes: ["Redesign"],
     summary:
-      "The Data Orchestration screen now leads with the answer instead of the data, and disappears when nothing is wrong.",
+      "Data Orchestration Outcome now shows underwriters what failed, where, and why — instead of leaving them to verify it manually.",
     blocks: [
       {
         heading: "",
         sections: [
           {
+            type: "beforeAfter",
+            before: { src: "/Before - DO.png", alt: "Data Orchestration outcome before redesign" },
+            after: { src: "/Data Orchestration - Fail.png", alt: "Data Orchestration outcome after redesign" },
+          },
+          {
             type: "text",
             content:
-              "The Data Orchestration screen now leads with the answer instead of the data, and disappears when nothing is wrong.",
+              "Data Orchestration Outcome now shows underwriters what failed, where, and why — instead of leaving them to verify it manually.",
           },
         ],
       },
@@ -200,7 +210,7 @@ export const projects: Project[] = [
           {
             type: "text",
             content:
-              "The redesigned Data Orchestration screen surfaces the failure category and the exact attributes that triggered it before anything else, replaces the dense vertical block with a compact row of data-provider cards aligned to the rest of the deal view, and goes quiet when a check passes cleanly. In four validation interviews with funding advisors and underwriters, the new layout was confirmed to match how users actually read a failed deal — failure-first, source by source, attribute by attribute. The redesign was approved for development with no major revisions.",
+              "Underwriters and funding advisors now open a deal and know within seconds whether it can move forward, which category is blocking it, and where to look next. What used to be the most time-consuming part of the underwriting review — parsing dense orchestration data to decide whether a deal is workable — became a moment of clarity at the top of the screen. The redesign is grounded in four interviews with funding advisors and underwriters, where the same reading pattern surfaced across every conversation: failure first, source by source, most of the data hidden until requested. The new design mirrors that pattern instead of fighting it.",
           },
         ],
       },
