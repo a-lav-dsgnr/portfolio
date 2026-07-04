@@ -11,13 +11,17 @@ type BeforeAfterProps = {
 
 export default function BeforeAfter({ before, after }: BeforeAfterProps) {
   const [view, setView] = useState<"before" | "after">("before");
-  const active = view === "before" ? before : after;
+  const activeIndex = view === "before" ? 0 : 1;
 
   return (
     <div className={styles.wrap}>
       <ImageLightbox
-        src={active.src}
-        alt={active.alt}
+        images={[
+          { ...before, label: "Before" },
+          { ...after, label: "After" },
+        ]}
+        activeIndex={activeIndex}
+        onSelect={(index) => setView(index === 0 ? "before" : "after")}
         className={styles.image}
         wrapClassName={styles.imageWrap}
       />

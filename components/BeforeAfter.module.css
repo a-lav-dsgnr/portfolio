@@ -17,25 +17,26 @@
 }
 
 .toggle {
-  display: inline-flex;
-  align-self: flex-start;
-  padding: 3px;
-  border-radius: 8px;
-  background: var(--border);
-  gap: 2px;
+  display: flex;
+  width: 120px;
+  align-self: center;
+  border-bottom: 1px solid var(--border);
 }
 
 .toggleBtn {
   appearance: none;
   border: none;
+  border-bottom: 2px solid transparent;
   background: transparent;
-  padding: 6px 16px;
-  border-radius: 6px;
+  flex: 1;
+  padding: 6px 0;
+  margin-bottom: -1px;
   font-size: 13px;
   line-height: 1.4;
   color: var(--fg-muted);
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  text-align: center;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .toggleBtn:hover {
@@ -44,6 +45,6 @@
 
 .toggleBtnActive,
 .toggleBtnActive:hover {
-  background: var(--bg);
   color: var(--fg);
+  border-bottom-color: var(--fg);
 }

@@ -3,7 +3,7 @@
   padding-bottom: 120px;
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 60px;
 }
 
 .header {
@@ -34,7 +34,7 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 18px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border);
   gap: 16px;
   color: var(--fg);

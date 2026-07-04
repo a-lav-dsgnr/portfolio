@@ -22,6 +22,18 @@
   z-index: 1000;
   cursor: zoom-out;
   padding: 24px;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.22s;
+  transition-timing-function: ease-out;
+}
+
+.overlayVisible {
+  opacity: 1;
+}
+
+.overlayExiting {
+  transition-duration: 0.15s;
 }
 
 .fullImg {
@@ -30,4 +42,61 @@
   border-radius: 8px;
   display: block;
   cursor: default;
+  opacity: 0;
+  scale: 0.96;
+  filter: blur(4px);
+  transition-property: opacity, scale, filter;
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.fullImgVisible {
+  opacity: 1;
+  scale: 1;
+  filter: blur(0);
+}
+
+.fullImgExiting {
+  transition-duration: 0.15s;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.toggle {
+  display: flex;
+  width: 120px;
+  border-bottom: 1px solid oklch(1 0 0 / 0.3);
+}
+
+.toggleBtn {
+  appearance: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  flex: 1;
+  padding: 6px 0;
+  margin-bottom: -1px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: oklch(1 0 0 / 0.6);
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.toggleBtn:hover {
+  color: oklch(1 0 0 / 0.9);
+}
+
+.toggleBtnActive,
+.toggleBtnActive:hover {
+  color: oklch(1 0 0);
+  border-bottom-color: oklch(1 0 0);
 }
