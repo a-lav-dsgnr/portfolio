@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           <div className={styles.identity}>
             <span className={styles.name}>Anastasiia Lavrentii</span>
-            <span className={styles.role}>Product Designer</span>
+            <span className={styles.role}>Senior Product Designer</span>
           </div>
         </div>
         <p className={styles.bio}>
@@ -33,19 +33,9 @@ export default function Home() {
           faster and tighten the loop between design and engineering.
         </p>
         <p className={styles.bio}>
-          Always up for a good conversation — drop me an{" "}
+        You can reach me via{" "}
           <a href="mailto:a.lav.dsgnr@gmail.com" className={styles.inlineLink}>
             <span>email</span>
-            <span className={styles.linkArrow} aria-hidden="true">↗</span>
-          </a>
-          , take a look at my{" "}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.inlineLink}
-          >
-            <span>resume</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </a>
           , or find me on{" "}
@@ -56,6 +46,16 @@ export default function Home() {
             className={styles.inlineLink}
           >
             <span>linkedIn</span>
+            <span className={styles.linkArrow} aria-hidden="true">↗</span>
+          </a>
+          . You can also view my{" "}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.inlineLink}
+          >
+            <span>resume</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </a>
           .
