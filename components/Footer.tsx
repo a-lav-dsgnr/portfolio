@@ -59,9 +59,9 @@ export default function Footer() {
     <footer ref={footerRef} className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.links}>
-          <a href="mailto:a.lav.dsgnr@gmail.com" className={styles.link}>Email</a>
-          <a href="https://www.linkedin.com/in/anastasiia-lavrentii-207937238/" target="_blank" rel="noopener noreferrer" className={styles.link}>LinkedIn</a>
-          <a href="/resume.pdf" className={styles.link}>Resume</a>
+          <a href="mailto:a.lav.dsgnr@gmail.com" className={styles.link} data-cuelume-hover="tick">Email</a>
+          <a href="https://www.linkedin.com/in/anastasiia-lavrentii-207937238/" target="_blank" rel="noopener noreferrer" className={styles.link} data-cuelume-hover="tick">LinkedIn</a>
+          <a href="/resume.pdf" className={styles.link} data-cuelume-hover="tick">Resume</a>
         </div>
         <svg
           className={styles.signature}

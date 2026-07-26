@@ -34,7 +34,11 @@ export default function Home() {
         </p>
         <p className={styles.bio}>
         You can reach me via{" "}
-          <a href="mailto:a.lav.dsgnr@gmail.com" className={styles.inlineLink}>
+          <a
+            href="mailto:a.lav.dsgnr@gmail.com"
+            className={styles.inlineLink}
+            data-cuelume-hover="tick"
+          >
             <span>email</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </a>
@@ -44,6 +48,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.inlineLink}
+            data-cuelume-hover="tick"
           >
             <span>linkedIn</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
@@ -54,6 +59,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.inlineLink}
+            data-cuelume-hover="tick"
           >
             <span>resume</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
@@ -65,16 +71,37 @@ export default function Home() {
       {/* ── WORK ── */}
       <section id="work" className={styles.section}>
         <h2 className={styles.sectionTitle}>Selected Work</h2>
-        <div className={styles.projectList}>
-          {[...projects].sort((a, b) => Number(b.year) - Number(a.year)).map((p) => (
-            <Link key={p.slug} href={`/work/${p.slug}`} className={styles.projectItem}>
-              <div>
-                <span className={styles.projectName}>{p.name}</span>
-                <span className={styles.projectRole}>{p.featureTypes.join(" · ")}</span>
+        <div className={styles.projectGrid}>
+          {[...projects].sort((a, b) => Number(b.year) - Number(a.year)).map((p) => {
+            const cover = (p.cardImage ?? p.heroImage)?.split("?")[0];
+            return (
+            <Link key={p.slug} href={`/work/${p.slug}`} className={styles.projectCard}>
+              {cover && (
+                <div className={styles.projectCardImageWrap}>
+                  <Image
+                    src={cover}
+                    alt={p.name}
+                    fill
+                    className={styles.projectCardImage}
+                    sizes="(max-width: 600px) 100vw, 560px"
+                  />
+                </div>
+              )}
+              <div className={styles.projectCardBody}>
+                <div className={styles.projectCardHeader}>
+                  <span className={styles.projectCardName}>{p.name}</span>
+                  <span className={styles.projectCardYear}>{p.year}</span>
+                </div>
+                <span className={styles.projectCardMeta}>{p.featureTypes.join(" · ")}</span>
+                <p className={styles.projectCardSummary}>{p.summary}</p>
+                <span className={styles.projectCardCta}>
+                  <span>View case study</span>
+                  <span className={styles.linkArrow} aria-hidden="true">↗</span>
+                </span>
               </div>
-              <span className={styles.projectYear}>{p.year}</span>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 

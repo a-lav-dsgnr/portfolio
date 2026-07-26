@@ -88,55 +88,116 @@
 }
 
 /* ── WORK ── */
-.projectList {
-  display: flex;
-  flex-direction: column;
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
-.projectItem {
+@media (max-width: 600px) {
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background-color: var(--surface);
+  color: var(--fg);
+  transition-property: border-color, transform, background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+.projectCard:hover {
+  border-color: var(--fg-subtle);
+  transform: translateY(-2px);
+}
+
+.projectCardImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  background-color: var(--border);
+  overflow: hidden;
+}
+
+.projectCardImage {
+  object-fit: cover;
+  transition-property: transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+}
+
+.projectCard:hover .projectCardImage {
+  transform: scale(1.03);
+}
+
+.projectCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 8px 10px;
+}
+
+.projectCardHeader {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-  gap: 16px;
-  color: var(--fg);
+  gap: 12px;
 }
 
-.projectItem > * {
-  transition-property: opacity;
-  transition-duration: 0.15s;
+.projectCardName {
+  font-size: 16px;
+  font-weight: 550;
 }
 
-.projectItem:first-child {
-  border-top: 1px solid var(--border);
-}
-
-.projectItem:hover > * {
-  opacity: 0.55;
-}
-
-.projectItem > div {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.projectName {
-  font-size: 15px;
-  font-weight: 450;
-}
-
-.projectRole {
-  font-size: 13px;
-  color: var(--fg-muted);
-}
-
-.projectYear {
+.projectCardYear {
   font-size: 13px;
   color: var(--fg-subtle);
   flex-shrink: 0;
   font-variant-numeric: tabular-nums;
+}
+
+.projectCardMeta {
+  font-size: 13px;
+  color: var(--fg-subtle);
+}
+
+.projectCardSummary {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.65;
+  margin-top: 4px;
+}
+
+.projectCardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg);
+  margin-top: 8px;
+}
+
+.projectCardCta > :first-child {
+  text-underline-offset: 3px;
+}
+
+.projectCard:hover .projectCardCta > :first-child {
+  text-decoration: underline;
+  text-decoration-color: var(--fg);
+}
+
+.projectCard:hover .projectCardCta .linkArrow {
+  transform: translate(1px, -1px);
 }
 
 /* ── ABOUT ── */

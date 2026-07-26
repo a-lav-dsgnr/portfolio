@@ -2,6 +2,7 @@ export type ProjectSection =
   | { type: "text"; content: string }
   | { type: "bullets"; intro?: string; items: { bold?: string; text: string }[] }
   | { type: "image"; src: string; alt: string }
+  | { type: "carousel"; images: { src: string; alt: string }[] }
   | { type: "video"; src: string; alt: string; poster?: string; scale?: number; caption?: string }
   | {
       type: "beforeAfter";
@@ -23,6 +24,8 @@ export type Project = {
   year: string;
   summary: string;
   heroImage?: string;
+  /** Thumbnail for the project card on the homepage. Falls back to heroImage. */
+  cardImage?: string;
   blocks: ProjectBlock[];
 };
 
@@ -186,6 +189,7 @@ export const projects: Project[] = [
     year: "2026",
     industry: "B2B Lending • Fintech",
     featureTypes: ["Redesign"],
+    cardImage: "/Data Orchestration - Fail.png",
     summary:
       "Data Orchestration Outcome now shows underwriters what failed, where, and why — instead of leaving them to verify it manually.",
     blocks: [
@@ -236,6 +240,19 @@ export const projects: Project[] = [
             type: "text",
             content:
               "I redesigned Data Orchestration Outcome as part of the underwriting deal view. The surface was rebuilt around failure-first reading — the outcome now aligns with the other data providers, failures are called out above with direct links to affected attributes, and the full check log is organized by category with filtering and search.",
+          },
+          {
+            type: "carousel",
+            images: [
+              {
+                src: "/Compact data-provider layout-before.jpg",
+                alt: "Data provider layout before the redesign",
+              },
+              {
+                src: "/Compact data-provider layout-after.jpg",
+                alt: "Data provider layout after the redesign",
+              },
+            ],
           },
           {
             type: "subsection",

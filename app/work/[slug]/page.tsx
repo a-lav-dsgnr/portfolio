@@ -5,6 +5,7 @@ import { projects } from "@/data/projects";
 import styles from "./page.module.css";
 import ImageLightbox from "@/components/ImageLightbox";
 import BeforeAfter from "@/components/BeforeAfter";
+import ImageCarousel from "@/components/ImageCarousel";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -72,26 +73,35 @@ export default async function ProjectPage({ params }: Props) {
                   const section = block.sections[idx];
                   const next = block.sections[idx + 1];
 
-                  if ((section.type === "image" || section.type === "video") && next?.type === "subsection") {
+                  if (
+                    (section.type === "image" ||
+                      section.type === "video" ||
+                      section.type === "carousel") &&
+                    next?.type === "subsection"
+                  ) {
                     const paragraphs = Array.isArray(next.content) ? next.content : [next.content];
                     items.push(
                       <div key={idx} className={styles.imageGroup}>
-                        <div className={styles.imageWrap}>
-                          {section.type === "image" ? (
-                            <img src={section.src} alt={section.alt} className={styles.image} />
-                          ) : (
-                            <video
-                              src={section.src}
-                              className={styles.image}
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              aria-label={section.alt}
-                              style={section.scale ? { transform: `scale(${section.scale})` } : undefined}
-                            />
-                          )}
-                        </div>
+                        {section.type === "carousel" ? (
+                          <ImageCarousel images={section.images} />
+                        ) : (
+                          <div className={styles.imageWrap}>
+                            {section.type === "image" ? (
+                              <img src={section.src} alt={section.alt} className={styles.image} />
+                            ) : (
+                              <video
+                                src={section.src}
+                                className={styles.image}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                aria-label={section.alt}
+                                style={section.scale ? { transform: `scale(${section.scale})` } : undefined}
+                              />
+                            )}
+                          </div>
+                        )}
                         {section.type === "video" && section.caption && (
                           <p className={styles.caption}>{section.caption}</p>
                         )}
@@ -137,6 +147,8 @@ export default async function ProjectPage({ params }: Props) {
                         <img src={section.src} alt={section.alt} className={styles.image} />
                       </div>
                     );
+                  } else if (section.type === "carousel") {
+                    items.push(<ImageCarousel key={idx} images={section.images} />);
                   } else if (section.type === "video") {
                     items.push(
                       <div key={idx} className={styles.imageGroup}>
