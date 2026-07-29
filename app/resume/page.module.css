@@ -1,0 +1,227 @@
+/* Width comes from the container — globals.css widens --max-width on this
+   route so the two-column resume has room to breathe. */
+.page {
+  padding-top: 40px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ── TOP BAR ── */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Matches the case-study back / next project controls: text + icon, no chrome. */
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--fg-muted);
+  transition-property: color;
+  transition-duration: 0.15s;
+}
+
+.navButton:hover {
+  color: var(--fg);
+}
+
+.navIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.identityText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--fg);
+}
+
+.role {
+  font-size: 15px;
+  color: var(--fg-muted);
+}
+
+.location {
+  font-size: 15px;
+  color: var(--fg-subtle);
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  list-style: none;
+  text-align: right;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--fg-muted);
+  transition-property: color;
+  transition-duration: 0.15s;
+}
+
+.contactLink:hover {
+  color: var(--fg);
+}
+
+.contactLink > :last-child {
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition-property: text-decoration-color;
+  transition-duration: 0.15s;
+}
+
+.contactLink:hover > :last-child {
+  text-decoration-color: var(--fg);
+}
+
+.linkArrow {
+  font-size: 0.85em;
+  transition-property: transform;
+  transition-duration: 0.15s;
+}
+
+.contactLink:hover .linkArrow {
+  transform: translate(1px, -1px);
+}
+
+/* ── BODY ── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  column-gap: 24px;
+  align-items: start;
+}
+
+.rowLead {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.jobTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1.4;
+  /* Wrap naturally (role line, then company) instead of the site-wide
+     heading balance that splits the role itself. */
+  text-wrap: wrap;
+}
+
+.jobDates {
+  font-size: 13px;
+  color: var(--fg-subtle);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+
+.groupLabel {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1.4;
+}
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
+  color: var(--fg-muted);
+  line-height: 1.65;
+}
+
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.62em;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--fg-subtle);
+}
+
+.skills {
+  font-size: 15px;
+  color: var(--fg-muted);
+  line-height: 1.75;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .page {
+    gap: 40px;
+    /* Long-form text needs a gutter the narrow pages can live without. */
+    padding-inline: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 32px;
+  }
+
+  .contacts {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .body {
+    gap: 36px;
+  }
+
+  /* A 190px label column starves the bullets on a phone — stack instead. */
+  .row {
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+  }
+}

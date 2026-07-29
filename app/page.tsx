@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import CopyEmail from "@/components/CopyEmail";
+import ComingSoon from "@/components/ComingSoon";
 import { projects } from "@/data/projects";
 
 export default function Home() {
@@ -35,7 +36,7 @@ export default function Home() {
         <p className={styles.bio}>
         You can reach me via{" "}
           <a
-            href="mailto:a.lav.dsgnr@gmail.com"
+            href="mailto:lav.dsgnr@gmail.com"
             className={styles.inlineLink}
             data-cuelume-hover="tick"
           >
@@ -54,16 +55,14 @@ export default function Home() {
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </a>
           . You can also view my{" "}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/resume"
             className={styles.inlineLink}
             data-cuelume-hover="tick"
           >
             <span>resume</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
-          </a>
+          </Link>
           .
         </p>
       </section>
@@ -72,36 +71,35 @@ export default function Home() {
       <section id="work" className={styles.section}>
         <h2 className={styles.sectionTitle}>Selected Work</h2>
         <div className={styles.projectGrid}>
-          {[...projects].sort((a, b) => Number(b.year) - Number(a.year)).map((p) => {
-            const cover = (p.cardImage ?? p.heroImage)?.split("?")[0];
-            return (
+          {[...projects].sort((a, b) => Number(b.year) - Number(a.year)).map((p) => (
             <Link key={p.slug} href={`/work/${p.slug}`} className={styles.projectCard}>
-              {cover && (
-                <div className={styles.projectCardImageWrap}>
-                  <Image
-                    src={cover}
-                    alt={p.name}
-                    fill
-                    className={styles.projectCardImage}
-                    sizes="(max-width: 600px) 100vw, 560px"
-                  />
-                </div>
-              )}
+              <div className={styles.projectCardImageWrap}>
+                {p.cardThumb && (
+                  <>
+                    <Image
+                      src={p.cardThumb.src}
+                      alt=""
+                      width={p.cardThumb.width}
+                      height={p.cardThumb.height}
+                      className={styles.projectCardThumb}
+                    />
+                    <Image
+                      src={p.cardThumb.hover}
+                      alt=""
+                      width={p.cardThumb.width}
+                      height={p.cardThumb.height}
+                      className={`${styles.projectCardThumb} ${styles.projectCardThumbColor}`}
+                    />
+                  </>
+                )}
+              </div>
               <div className={styles.projectCardBody}>
-                <div className={styles.projectCardHeader}>
-                  <span className={styles.projectCardName}>{p.name}</span>
-                  <span className={styles.projectCardYear}>{p.year}</span>
-                </div>
-                <span className={styles.projectCardMeta}>{p.featureTypes.join(" · ")}</span>
+                <span className={styles.projectCardName}>{p.name}</span>
                 <p className={styles.projectCardSummary}>{p.summary}</p>
-                <span className={styles.projectCardCta}>
-                  <span>View case study</span>
-                  <span className={styles.linkArrow} aria-hidden="true">↗</span>
-                </span>
               </div>
             </Link>
-            );
-          })}
+          ))}
+          <ComingSoon />
         </div>
       </section>
 

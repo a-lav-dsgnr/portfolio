@@ -1,86 +1,83 @@
 "use client";
 import { useEffect } from "react";
+import { play } from "cuelume";
+import type { SoundName } from "cuelume";
 
-// Own synthesis, tuned louder/longer than cuelume's built-in "tick" recipe
-// so it stays audible on laptop speakers. Bypasses cuelume's internal
-// recipe (not tunable from outside the package) but keeps the same
-// data-cuelume-hover="tick" markup, so no JSX changes were needed.
-let ctx: AudioContext | null = null;
-
-function getContext() {
-  if (ctx) return ctx;
-  const Ctor = window.AudioContext ?? (window as any).webkitAudioContext;
-  if (!Ctor) return null;
-  try {
-    ctx = new Ctor();
-  } catch {
-    return null;
-  }
-  return ctx;
-}
-
-function unlock() {
-  const context = getContext();
-  if (context && context.state !== "running") {
-    context.resume().catch(() => {});
-  }
-}
-
-function playTick() {
-  const context = getContext();
-  if (!context) return;
-  const afterResume = () => {
-    const now = context.currentTime;
-
-    const master = context.createGain();
-    master.gain.value = 0.45;
-    master.connect(context.destination);
-
-    // bandpass-filtered noise burst — the "click" body
-    const duration = 0.05;
-    const length = Math.max(1, Math.floor(duration * context.sampleRate));
-    const buffer = context.createBuffer(1, length, context.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < length; i++) data[i] = 2 * Math.random() - 1;
-    const noise = context.createBufferSource();
-    noise.buffer = buffer;
-    const filter = context.createBiquadFilter();
-    filter.type = "bandpass";
-    filter.frequency.value = 5400;
-    filter.Q.value = 1.8;
-    const noiseGain = context.createGain();
-    noiseGain.gain.setValueAtTime(0.0001, now);
-    noiseGain.gain.exponentialRampToValueAtTime(0.6, now + 0.002);
-    noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
-    noise.connect(filter).connect(noiseGain).connect(master);
-    noise.start(now);
-    noise.stop(now + duration + 0.02);
-
-    // short sine ping on top — the "brightness"
-    const osc = context.createOscillator();
-    osc.type = "sine";
-    osc.frequency.value = 2600;
-    const oscGain = context.createGain();
-    oscGain.gain.setValueAtTime(0.0001, now);
-    oscGain.gain.exponentialRampToValueAtTime(0.12, now + 0.002);
-    oscGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
-    osc.connect(oscGain).connect(master);
-    osc.start(now);
-    osc.stop(now + 0.06);
-
-    setTimeout(() => {
-      master.disconnect();
-    }, 120);
-  };
-
-  if (context.state === "running") {
-    afterResume();
-  } else {
-    context.resume().then(afterResume, () => {});
-  }
-}
-
+// Sound comes from cuelume's own engine and recipe palette — this file owns
+// the wiring, the level, and the unlock.
+const FALLBACK: SoundName = "tick";
 const HOVER_GAP_MS = 150;
+
+// cuelume's recipes are mixed very quietly: `tick` peaks at masterGain 0.4 ×
+// layer peak 0.14 ≈ 0.056 amplitude, which is inaudible on laptop speakers.
+// The package exposes no gain control (only setEnabled), and it owns its
+// AudioContext internally, so the one place to turn it up is the context's
+// destination — we shadow the getter with a gain stage that feeds the real
+// output. Everything upstream is still cuelume's synthesis, just louder.
+const BOOST = 10;
+
+let boostInstalled = false;
+let amp: GainNode | null = null;
+let level = BOOST;
+
+function installBoost() {
+  if (boostInstalled) return;
+  const Ctor = window.AudioContext ?? (window as any).webkitAudioContext;
+  if (!Ctor) return;
+  const proto = Ctor.prototype;
+
+  // `destination` sits on BaseAudioContext.prototype in current browsers but
+  // on the concrete prototype in older WebKit — walk the chain for it.
+  let owner: object | null = proto;
+  let real: (() => AudioDestinationNode) | undefined;
+  while (owner) {
+    const descriptor = Object.getOwnPropertyDescriptor(owner, "destination");
+    if (descriptor?.get) {
+      real = descriptor.get as () => AudioDestinationNode;
+      break;
+    }
+    owner = Object.getPrototypeOf(owner);
+  }
+  if (!real) return;
+  boostInstalled = true;
+
+  const amps = new WeakMap<BaseAudioContext, GainNode>();
+  Object.defineProperty(proto, "destination", {
+    configurable: true,
+    get(this: AudioContext) {
+      const output = real!.call(this);
+      let node = amps.get(this);
+      if (!node) {
+        node = this.createGain();
+        node.gain.value = level;
+        node.connect(output);
+        amps.set(this, node);
+        amp = node;
+      }
+      return node;
+    },
+  });
+}
+
+// Safari only unlocks audio for a context created or resumed inside a real
+// gesture handler; a hover doesn't count, so cuelume's lazily created context
+// would stay suspended forever and nothing would ever play. Prime it on the
+// first click/keypress instead — muted via our own gain stage, so the priming
+// cue itself stays silent.
+function prime() {
+  const context = amp?.context as AudioContext | undefined;
+  if (context?.state === "running") return;
+  level = 0;
+  if (amp) amp.gain.value = 0;
+  play(FALLBACK);
+  const opened = (amp?.context as AudioContext | undefined) ?? context;
+  if (opened && opened.state !== "running") opened.resume().catch(() => {});
+  setTimeout(() => {
+    level = BOOST;
+    if (amp) amp.gain.value = BOOST;
+  }, 300);
+}
+
 let lastHoverTime = -Infinity;
 
 function isMouse(event: PointerEvent) {
@@ -92,11 +89,22 @@ function isMouse(event: PointerEvent) {
 
 export default function CuelumeBind() {
   useEffect(() => {
-    const unlockOnce = () => unlock();
-    document.addEventListener("pointerdown", unlockOnce, { capture: true, once: true });
-    document.addEventListener("keydown", unlockOnce, { capture: true, once: true });
-    document.addEventListener("touchstart", unlockOnce, { capture: true, once: true });
+    try {
+      installBoost();
+    } catch {
+      // Worst case the cue stays at cuelume's stock level.
+    }
 
+    // Every gesture is another chance to unlock — Safari can drop a context
+    // back to "interrupted" when the tab loses focus or a call comes in.
+    const gestures = ["pointerdown", "click", "keydown", "touchend"] as const;
+    gestures.forEach((type) =>
+      document.addEventListener(type, prime, { capture: true })
+    );
+
+    // Not cuelume's `bind()`: it listens on `pointerenter`, which is
+    // dispatched per-element and unreliable through one delegated listener.
+    // `pointerover` bubbles, so nothing gets missed.
     const onHover = (event: PointerEvent) => {
       if (!(event.target instanceof Element)) return;
       const el = event.target.closest("[data-cuelume-hover]");
@@ -106,15 +114,16 @@ export default function CuelumeBind() {
       const now = performance.now();
       if (now - lastHoverTime < HOVER_GAP_MS) return;
       lastHoverTime = now;
-      playTick();
+      // The attribute picks the recipe; cuelume ignores unknown names.
+      play((el.getAttribute("data-cuelume-hover") as SoundName) || FALLBACK);
     };
-    document.addEventListener("pointerenter", onHover, true);
+    document.addEventListener("pointerover", onHover, true);
 
     return () => {
-      document.removeEventListener("pointerdown", unlockOnce, true);
-      document.removeEventListener("keydown", unlockOnce, true);
-      document.removeEventListener("touchstart", unlockOnce, true);
-      document.removeEventListener("pointerenter", onHover, true);
+      gestures.forEach((type) =>
+        document.removeEventListener(type, prime, true)
+      );
+      document.removeEventListener("pointerover", onHover, true);
     };
   }, []);
 

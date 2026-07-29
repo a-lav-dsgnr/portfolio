@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   height: 56px;
-  max-width: 560px !important;
+  max-width: var(--max-width) !important;
   width: 100%;
   margin: 0 auto;
   border-bottom: 1px solid transparent;

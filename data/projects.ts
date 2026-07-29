@@ -26,6 +26,8 @@ export type Project = {
   heroImage?: string;
   /** Thumbnail for the project card on the homepage. Falls back to heroImage. */
   cardImage?: string;
+  /** Thumbnail shown inside the card plate: grayscale by default, colored on hover. */
+  cardThumb?: { src: string; hover: string; width: number; height: number };
   blocks: ProjectBlock[];
 };
 
@@ -37,6 +39,12 @@ export const projects: Project[] = [
     featureTypes: ["From Scratch", "Optimization"],
     year: "2025",
     heroImage: "/Command-Panel.jpg?v=2",
+    cardThumb: {
+      src: "/thumbnail2.1.png",
+      hover: "/thumbnail2.1-1.png",
+      width: 320,
+      height: 232,
+    },
     summary:
       "A keyboard-first command interface that lets lending teams find deals and run AI agents without leaving their current screen.",
     blocks: [
@@ -190,6 +198,12 @@ export const projects: Project[] = [
     industry: "B2B Lending • Fintech",
     featureTypes: ["Redesign"],
     cardImage: "/Data Orchestration - Fail.png",
+    cardThumb: {
+      src: "/thumbnail1.1.png",
+      hover: "/thumbnail1.2.png",
+      width: 500,
+      height: 307,
+    },
     summary:
       "Data Orchestration Outcome now shows underwriters what failed, where, and why — instead of leaving them to verify it manually.",
     blocks: [
@@ -229,7 +243,7 @@ export const projects: Project[] = [
           {
             type: "text",
             content:
-              "I conducted four interviews with funding advisors and underwriters to understand how the block fit into their workflow and where it was costing time. Four findings were consistent across every conversation. Failure reasons were unreadable because they were shown as internal attribute codes rather than in plain language. The block obscured the data providers users relied on for verification (Equifax, MoneyThumb, and others), so most participants bypassed orchestration and verified each source manually. Every participant described the same reading order: bottom to top, failed conditions first, passed conditions skipped. And once a failure was identified, reaching the relevant attribute or supporting document required several navigation steps across unrelated screens.",
+              "Interviewed funding advisors and underwriters to understand where the block fit into their workflow and where it was costing time. Four issues came up consistently. Failure reasons were shown as internal attribute codes rather than plain language. The block obscured the data sources users relied on for verification, so most participants bypassed orchestration and verified each source manually. Everyone described the same reading order — bottom to top, failed conditions first, passed conditions skipped. And once a failure was identified, reaching the relevant attribute or supporting document required several navigation steps across unrelated screens.",
           },
         ],
       },
@@ -249,7 +263,7 @@ export const projects: Project[] = [
                 alt: "Data provider layout before the redesign",
               },
               {
-                src: "/Compact data-provider layout-after.jpg",
+                src: "/Compact data-provider layout-after.jpg?v=2",
                 alt: "Data provider layout after the redesign",
               },
             ],
@@ -261,10 +275,36 @@ export const projects: Project[] = [
               "Compact data-provider layout. The orchestration outcome is no longer a vertical block dominating the screen. It sits as one card in a horizontal row alongside KYB, Bank Data, Personal Credit, Match, and CFA — the same data providers users were already navigating to verify failures manually. The full check log is laid out below, with every category collapsed to a single row until it actually needs to be expanded.",
           },
           {
+            type: "carousel",
+            images: [
+              {
+                src: "/Failure banner with linked attributes-1.jpg",
+                alt: "Failure banner naming the failed category with the list of failed attributes",
+              },
+              {
+                src: "/Failure banner with linked attributes-2.jpg",
+                alt: "Failed attributes listed on a check log row, each linking to the relevant block",
+              },
+            ],
+          },
+          {
             type: "subsection",
             title: "Failure banner with linked attributes.",
             content:
               "When a check fails, a banner names the failed category and lists the specific attributes within it. Each attribute is a direct link to the relevant block within the deal — the exact field behind the failure, with expected and returned values.",
+          },
+          {
+            type: "carousel",
+            images: [
+              {
+                src: "/Filtering..jpg",
+                alt: "Status filter narrowing the check log to Pass, Fail, or Manual Review",
+              },
+              {
+                src: "/Search.jpg",
+                alt: "Search field finding an attribute by name within the check log",
+              },
+            ],
           },
           {
             type: "subsection",
@@ -285,32 +325,5 @@ export const projects: Project[] = [
         ],
       },
     ],
-  },
-  {
-    slug: "project-two",
-    name: "Project Two",
-    year: "2024",
-    industry: "SaaS",
-    featureTypes: ["UX Research", "Design System"],
-    summary: "Brief description of the project, the problem it solved, and your role in shaping the design.",
-    blocks: [],
-  },
-  {
-    slug: "project-three",
-    name: "Project Three",
-    year: "2023",
-    industry: "Mobile",
-    featureTypes: ["Mobile", "iOS"],
-    summary: "Brief description of the project, the problem it solved, and your role in shaping the design.",
-    blocks: [],
-  },
-  {
-    slug: "project-four",
-    name: "Project Four",
-    year: "2023",
-    industry: "Enterprise",
-    featureTypes: ["Web", "B2B"],
-    summary: "Brief description of the project, the problem it solved, and your role in shaping the design.",
-    blocks: [],
   },
 ];

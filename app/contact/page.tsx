@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 const links = [
   {
     label: "Email",
-    href: "mailto:a.lav.dsgnr@gmail.com",
-    display: "a.lav.dsgnr@gmail.com",
+    href: "mailto:lav.dsgnr@gmail.com",
+    display: "lav.dsgnr@gmail.com",
   },
   {
     label: "LinkedIn",

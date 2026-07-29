@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "./CopyEmail.module.css";
 
-const EMAIL = "a.lav.dsgnr@gmail.com";
+const EMAIL = "lav.dsgnr@gmail.com";
 
 export default function CopyEmail() {
   const [copied, setCopied] = useState(false);

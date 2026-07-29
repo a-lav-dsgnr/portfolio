@@ -92,6 +92,9 @@ export default function Nav() {
     router.push("/");
   };
 
+  // The resume is a standalone page with its own "Back to Portfolio" control.
+  if (pathname === "/resume") return null;
+
   const slug = pathname?.startsWith("/work/") ? pathname.slice("/work/".length) : null;
   const current = slug ? ordered.findIndex((p) => p.slug === slug) : -1;
 

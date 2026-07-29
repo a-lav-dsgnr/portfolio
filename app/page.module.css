@@ -103,20 +103,15 @@
 .projectCard {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 12px;
+  padding: 4px;
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 16px;
   background-color: var(--surface);
   color: var(--fg);
-  transition-property: border-color, transform, background-color;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
 }
 
 .projectCard:hover {
-  border-color: var(--fg-subtle);
-  transform: translateY(-2px);
+  color: var(--fg);
 }
 
 .projectCardImageWrap {
@@ -124,80 +119,47 @@
   width: 100%;
   aspect-ratio: 16 / 10;
   border-radius: 12px;
-  background-color: var(--border);
+  background-color: #666666;
   overflow: hidden;
 }
 
-.projectCardImage {
+.projectCardThumb {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  max-width: none;
   object-fit: cover;
-  transition-property: transform;
-  transition-duration: 0.4s;
-  transition-timing-function: ease;
+  border-radius: 0;
+  outline: none;
 }
 
-.projectCard:hover .projectCardImage {
-  transform: scale(1.03);
+.projectCardThumbColor {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.projectCard:hover .projectCardThumbColor,
+.projectCard:focus-visible .projectCardThumbColor {
+  opacity: 1;
 }
 
 .projectCardBody {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 16px 8px 10px;
-}
-
-.projectCardHeader {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 4px;
+  padding: 18px 12px 16px;
 }
 
 .projectCardName {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 550;
 }
 
-.projectCardYear {
-  font-size: 13px;
-  color: var(--fg-subtle);
-  flex-shrink: 0;
-  font-variant-numeric: tabular-nums;
-}
-
-.projectCardMeta {
-  font-size: 13px;
-  color: var(--fg-subtle);
-}
-
 .projectCardSummary {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--fg-muted);
   line-height: 1.65;
-  margin-top: 4px;
-}
-
-.projectCardCta {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--fg);
-  margin-top: 8px;
-}
-
-.projectCardCta > :first-child {
-  text-underline-offset: 3px;
-}
-
-.projectCard:hover .projectCardCta > :first-child {
-  text-decoration: underline;
-  text-decoration-color: var(--fg);
-}
-
-.projectCard:hover .projectCardCta .linkArrow {
-  transform: translate(1px, -1px);
+  text-wrap: wrap;
 }
 
 /* ── ABOUT ── */
