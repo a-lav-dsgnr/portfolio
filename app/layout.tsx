@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CuelumeBind from "@/components/CuelumeBind";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Anastasiia Lavrentii — Product Designer",
@@ -30,6 +31,7 @@ export default function RootLayout({
         <Nav />
         <main className="container">{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
