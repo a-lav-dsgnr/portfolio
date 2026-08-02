@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import styles from "./ImageLightbox.module.css";
 import Lightbox, { type LightboxImage } from "./Lightbox";
+import StaticImage from "./StaticImage";
 
 type Props = {
   src?: string;
@@ -43,14 +43,13 @@ export default function ImageLightbox({
   return (
     <>
       <div className={`${wrapClassName ?? ""} ${styles.trigger}`} onClick={() => setOpen(true)}>
-        <Image
-          src={current.src.split("?")[0]}
+        <StaticImage
+          src={current.src}
           alt={current.alt}
           className={className}
-          width={current.width ?? 0}
-          height={current.height ?? 0}
+          width={current.width}
+          height={current.height}
           sizes="(max-width: 600px) 100vw, 560px"
-          style={{ width: "100%", height: "auto" }}
         />
       </div>
 

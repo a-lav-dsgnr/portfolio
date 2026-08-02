@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
@@ -7,15 +6,24 @@ import styles from "./page.module.css";
 import ImageLightbox from "@/components/ImageLightbox";
 import BeforeAfter from "@/components/BeforeAfter";
 import ImageCarousel from "@/components/ImageCarousel";
+import StaticImage from "@/components/StaticImage";
 import { imageSize } from "@/lib/imageSize";
 
 type Props = { params: Promise<{ slug: string }> };
 
-/* Attach the file's intrinsic pixel size so next/image reserves the right
-   height before the image loads — this is what stops the page from jumping. */
+const IMAGE_SIZES = "(max-width: 600px) 100vw, 560px";
+
+/* The file's intrinsic pixel size, read once at build time, so next/image can
+   reserve the right height before the image loads — this is what stops the
+   page from jumping. Falls back to 0/0 when the file can't be read, which
+   StaticImage treats as "unknown" and renders a plain <img> instead. */
+function sizeOf(src: string): { width: number; height: number } {
+  const size = imageSize(src);
+  return { width: size?.width ?? 0, height: size?.height ?? 0 };
+}
+
 function sized<T extends { src: string }>(img: T): T & { width: number; height: number } {
-  const size = imageSize(img.src);
-  return { ...img, width: size?.width ?? 0, height: size?.height ?? 0 };
+  return { ...img, ...sizeOf(img.src) };
 }
 
 export async function generateStaticParams() {
@@ -64,10 +72,7 @@ export default async function ProjectPage({ params }: Props) {
         <ImageLightbox
           src={project.heroImage}
           alt={`${project.name} hero`}
-          {...(() => {
-            const s = imageSize(project.heroImage);
-            return { width: s?.width ?? 0, height: s?.height ?? 0 };
-          })()}
+          {...sizeOf(project.heroImage)}
           className={styles.heroImg}
           wrapClassName={styles.heroWrap}
         />
@@ -100,16 +105,12 @@ export default async function ProjectPage({ params }: Props) {
                         ) : (
                           <div className={styles.imageWrap}>
                             {section.type === "image" ? (
-                              <Image
-                                src={section.src.split("?")[0]}
+                              <StaticImage
+                                src={section.src}
                                 alt={section.alt}
                                 className={styles.image}
-                                {...(() => {
-                                  const s = imageSize(section.src);
-                                  return { width: s?.width ?? 0, height: s?.height ?? 0 };
-                                })()}
-                                sizes="(max-width: 600px) 100vw, 560px"
-                                style={{ width: "100%", height: "auto" }}
+                                {...sizeOf(section.src)}
+                                sizes={IMAGE_SIZES}
                               />
                             ) : (
                               <video
@@ -169,17 +170,14 @@ export default async function ProjectPage({ params }: Props) {
                       />
                     );
                   } else if (section.type === "image") {
-                    const s = imageSize(section.src);
                     items.push(
                       <div key={idx} className={styles.imageWrap}>
-                        <Image
-                          src={section.src.split("?")[0]}
+                        <StaticImage
+                          src={section.src}
                           alt={section.alt}
                           className={styles.image}
-                          width={s?.width ?? 0}
-                          height={s?.height ?? 0}
-                          sizes="(max-width: 600px) 100vw, 560px"
-                          style={{ width: "100%", height: "auto" }}
+                          {...sizeOf(section.src)}
+                          sizes={IMAGE_SIZES}
                         />
                       </div>
                     );

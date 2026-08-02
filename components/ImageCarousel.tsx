@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import styles from "./ImageCarousel.module.css";
 import Lightbox from "./Lightbox";
+import StaticImage from "./StaticImage";
 
 type CarouselImage = { src: string; alt: string; width?: number; height?: number };
 
@@ -34,14 +34,13 @@ export default function ImageCarousel({ images }: { images: CarouselImage[] }) {
             }}
           >
             <div className={styles.imageWrap}>
-              <Image
-                src={image.src.split("?")[0]}
+              <StaticImage
+                src={image.src}
                 alt={image.alt}
                 className={styles.image}
-                width={image.width ?? 0}
-                height={image.height ?? 0}
+                width={image.width}
+                height={image.height}
                 sizes="(max-width: 600px) 80vw, 448px"
-                style={{ width: "100%", height: "auto" }}
               />
             </div>
           </div>

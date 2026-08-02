@@ -136,10 +136,12 @@ export default function Nav() {
           ana.lav
         </Link>
         <nav className={styles.nav}>
-          <a href={isHome ? "#work" : "/#work"} onClick={(e) => scrollToSection(e, "work")}>
+          {/* This header never renders on the homepage (see the isHome guard
+              above), so these always link back to the home sections. */}
+          <a href="/#work" onClick={(e) => scrollToSection(e, "work")}>
             Work
           </a>
-          <a href={isHome ? "#about" : "/#about"} onClick={(e) => scrollToSection(e, "about")}>
+          <a href="/#about" onClick={(e) => scrollToSection(e, "about")}>
             About
           </a>
         </nav>
