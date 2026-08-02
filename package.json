@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "cuelume": "^0.1.2",
     "next": "^16.2.6",
     "react": "^19.0.0",
