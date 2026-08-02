@@ -29,22 +29,26 @@ const experience: Role[] = [
     company: "Lendflow",
     dates: "Jun 2024 – Present",
     bullets: [
-      "Designed product experiences for an embedded credit infrastructure connecting and automating lending for brands and lenders, across web for three distinct user roles",
-      "Built a unified deal tracking system spanning deal analysis and communications, replacing scattered, disconnected views used by operational teams, capital partners, and borrowers",
-      "Designed the interface for AI agent workflows, moving repetitive manual steps inside the product and reducing the need to switch between tools for funding advisors and underwriters",
-      "Scaled a design system adopted across product teams, and integrated AI into the design process to validate ideas before engineering involvement",
+      "Design core interfaces for funding advisors and underwriters on a B2B embedded lending infrastructure platform",
+      "Designed a command interface that made it possible to invoke AI agents, including one specifically for email, which helped cut manual inbox handling by 61% and first-response time by 67%",
+      "Own design end-to-end (research, prototyping, UI, and developer handoff), using Claude, Cursor, and Granola to speed up concepting and analysis",
+      "Build interactive prototypes instead of static screens to walk through complex flows",
+      "Expand and modernize an outdated design system alongside developers",
+      "Maintain the product's visual and marketing consistency, including campaign work",
+      "Drive day-to-day stakeholder communication and align product strategy with PMs and engineers",
     ],
   },
   {
     title: "Senior Product Designer",
     company: "Glow Design Agency",
-    dates: "Mar 2023 – Jun 2024",
+    dates: "Mar 2023 – Present",
     bullets: [
-      "Designed onboarding and activation flows for a proptech product, replacing a multi-step signup with a single guided flow across web and mobile",
-      "Redesigned the search and booking flow end to end, removing redundant steps between finding a listing and confirming a booking",
-      "Built enterprise admin tools giving internal teams a single interface for processes previously handled through manual, disconnected steps",
-      "Conducted interviews and usability testing to validate design decisions before development",
-      "Used AI tools to build prototypes and test solutions before committing engineering time",
+      "Designed end-to-end B2B SaaS products in fintech and workplace management within cross-functional teams, balancing business goals and user needs",
+      "Redesigned existing features and created new ones, improving usability and driving conversion at the booking and onboarding stages",
+      "Conducted user interviews, usability testing, and card sorting to uncover pain points and validate design decisions",
+      "Evolved the design system and selected handoff tools for smooth implementation by developers",
+      "Created documentation and used coding tools to demonstrate feature functionality",
+      "Tracked analytics and user behavior to improve experiences and drive feature adoption",
     ],
   },
   {
@@ -151,8 +155,7 @@ export default function Resume() {
         </Link>
         <a
           href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
+          download="Anastasiia-Lavrentii-CV.pdf"
           className={styles.navButton}
           data-cuelume-hover="tick"
         >
