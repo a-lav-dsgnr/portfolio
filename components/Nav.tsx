@@ -126,6 +126,9 @@ export default function Nav() {
     );
   }
 
+  // The homepage leads with its own hero, so it needs no top header.
+  if (isHome) return null;
+
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner} ${scrolled ? styles.bordered : ""}`}>

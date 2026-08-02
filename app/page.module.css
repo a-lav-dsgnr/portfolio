@@ -34,7 +34,7 @@
 }
 
 .avatarInitials {
-  font-size: 13px;
+  font-size: var(--text-ui);
   font-weight: 500;
   color: var(--fg-muted);
   letter-spacing: 0.02em;
@@ -48,18 +48,18 @@
 }
 
 .name {
-  font-size: 15px;
+  font-size: var(--text-body);
   font-weight: 500;
   color: var(--fg);
 }
 
 .role {
-  font-size: 15px;
+  font-size: var(--text-body);
   color: var(--fg-muted);
 }
 
 .bio {
-  font-size: 15px;
+  font-size: var(--text-body);
   color: var(--fg-muted);
   line-height: 1.75;
 }
@@ -75,12 +75,12 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
   scroll-margin-top: 72px;
 }
 
 .sectionTitle {
-  font-size: 12px;
+  font-size: var(--text-caption);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -151,12 +151,12 @@
 }
 
 .projectCardName {
-  font-size: 14px;
+  font-size: var(--text-body);
   font-weight: 550;
 }
 
 .projectCardSummary {
-  font-size: 12px;
+  font-size: var(--text-ui);
   color: var(--fg-muted);
   line-height: 1.65;
   text-wrap: wrap;
@@ -176,7 +176,7 @@
 }
 
 .aboutText p {
-  font-size: 15px;
+  font-size: var(--text-body);
   color: var(--fg-muted);
   line-height: 1.75;
 }
@@ -214,7 +214,7 @@
 }
 
 .contactSubtitle {
-  font-size: 15px;
+  font-size: var(--text-body);
   color: var(--fg-muted);
   line-height: 1.6;
 }
@@ -225,7 +225,7 @@
 }
 
 .contactLink {
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: var(--fg-muted);
   text-decoration: underline;
   text-decoration-color: var(--border);

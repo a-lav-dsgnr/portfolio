@@ -23,7 +23,7 @@
 }
 
 .name {
-  font-size: 14px;
+  font-size: var(--text-ui);
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--fg);
@@ -42,7 +42,7 @@
 }
 
 .nav a {
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: var(--fg-muted);
   transition-property: color;
   transition-duration: 0.15s;
@@ -57,7 +57,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
+  font-size: var(--text-ui);
   color: var(--fg-muted);
   transition-property: color;
   transition-duration: 0.15s;

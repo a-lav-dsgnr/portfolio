@@ -40,7 +40,7 @@
 }
 
 .label {
-  font-size: 12px;
+  font-size: var(--text-caption);
   font-weight: 550;
   letter-spacing: 0.08em;
   text-transform: uppercase;

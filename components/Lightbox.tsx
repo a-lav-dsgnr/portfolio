@@ -3,7 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./Lightbox.module.css";
 
-export type LightboxImage = { src: string; alt: string; label?: string };
+export type LightboxImage = {
+  src: string;
+  alt: string;
+  label?: string;
+  width?: number;
+  height?: number;
+};
 
 type Props = {
   images: LightboxImage[];

@@ -3,7 +3,7 @@
   border: none;
   cursor: pointer;
   font-family: inherit;
-  font-size: 15px;
+  font-size: var(--text-body);
   color: var(--fg);
   padding: 0;
   text-decoration: underline;

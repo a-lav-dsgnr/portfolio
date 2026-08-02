@@ -16,7 +16,7 @@
 }
 
 .link {
-  font-size: 13px;
+  font-size: var(--text-ui);
   color: var(--fg-subtle);
   text-decoration: underline;
   text-decoration-color: var(--border);

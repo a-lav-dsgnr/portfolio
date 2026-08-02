@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import styles from "./ImageCarousel.module.css";
 import Lightbox from "./Lightbox";
 
-type CarouselImage = { src: string; alt: string };
+type CarouselImage = { src: string; alt: string; width?: number; height?: number };
 
 export default function ImageCarousel({ images }: { images: CarouselImage[] }) {
   const [active, setActive] = useState(0);
@@ -33,7 +34,15 @@ export default function ImageCarousel({ images }: { images: CarouselImage[] }) {
             }}
           >
             <div className={styles.imageWrap}>
-              <img src={image.src} alt={image.alt} className={styles.image} />
+              <Image
+                src={image.src.split("?")[0]}
+                alt={image.alt}
+                className={styles.image}
+                width={image.width ?? 0}
+                height={image.height ?? 0}
+                sizes="(max-width: 600px) 80vw, 448px"
+                style={{ width: "100%", height: "auto" }}
+              />
             </div>
           </div>
         );

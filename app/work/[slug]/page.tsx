@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
@@ -6,8 +7,16 @@ import styles from "./page.module.css";
 import ImageLightbox from "@/components/ImageLightbox";
 import BeforeAfter from "@/components/BeforeAfter";
 import ImageCarousel from "@/components/ImageCarousel";
+import { imageSize } from "@/lib/imageSize";
 
 type Props = { params: Promise<{ slug: string }> };
+
+/* Attach the file's intrinsic pixel size so next/image reserves the right
+   height before the image loads — this is what stops the page from jumping. */
+function sized<T extends { src: string }>(img: T): T & { width: number; height: number } {
+  const size = imageSize(img.src);
+  return { ...img, width: size?.width ?? 0, height: size?.height ?? 0 };
+}
 
 export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -55,6 +64,10 @@ export default async function ProjectPage({ params }: Props) {
         <ImageLightbox
           src={project.heroImage}
           alt={`${project.name} hero`}
+          {...(() => {
+            const s = imageSize(project.heroImage);
+            return { width: s?.width ?? 0, height: s?.height ?? 0 };
+          })()}
           className={styles.heroImg}
           wrapClassName={styles.heroWrap}
         />
@@ -83,11 +96,21 @@ export default async function ProjectPage({ params }: Props) {
                     items.push(
                       <div key={idx} className={styles.imageGroup}>
                         {section.type === "carousel" ? (
-                          <ImageCarousel images={section.images} />
+                          <ImageCarousel images={section.images.map(sized)} />
                         ) : (
                           <div className={styles.imageWrap}>
                             {section.type === "image" ? (
-                              <img src={section.src} alt={section.alt} className={styles.image} />
+                              <Image
+                                src={section.src.split("?")[0]}
+                                alt={section.alt}
+                                className={styles.image}
+                                {...(() => {
+                                  const s = imageSize(section.src);
+                                  return { width: s?.width ?? 0, height: s?.height ?? 0 };
+                                })()}
+                                sizes="(max-width: 600px) 100vw, 560px"
+                                style={{ width: "100%", height: "auto" }}
+                              />
                             ) : (
                               <video
                                 src={section.src}
@@ -139,16 +162,29 @@ export default async function ProjectPage({ params }: Props) {
                     );
                   } else if (section.type === "beforeAfter") {
                     items.push(
-                      <BeforeAfter key={idx} before={section.before} after={section.after} />
+                      <BeforeAfter
+                        key={idx}
+                        before={sized(section.before)}
+                        after={sized(section.after)}
+                      />
                     );
                   } else if (section.type === "image") {
+                    const s = imageSize(section.src);
                     items.push(
                       <div key={idx} className={styles.imageWrap}>
-                        <img src={section.src} alt={section.alt} className={styles.image} />
+                        <Image
+                          src={section.src.split("?")[0]}
+                          alt={section.alt}
+                          className={styles.image}
+                          width={s?.width ?? 0}
+                          height={s?.height ?? 0}
+                          sizes="(max-width: 600px) 100vw, 560px"
+                          style={{ width: "100%", height: "auto" }}
+                        />
                       </div>
                     );
                   } else if (section.type === "carousel") {
-                    items.push(<ImageCarousel key={idx} images={section.images} />);
+                    items.push(<ImageCarousel key={idx} images={section.images.map(sized)} />);
                   } else if (section.type === "video") {
                     items.push(
                       <div key={idx} className={styles.imageGroup}>

@@ -5,8 +5,8 @@ import styles from "./BeforeAfter.module.css";
 import ImageLightbox from "./ImageLightbox";
 
 type BeforeAfterProps = {
-  before: { src: string; alt: string };
-  after: { src: string; alt: string };
+  before: { src: string; alt: string; width?: number; height?: number };
+  after: { src: string; alt: string; width?: number; height?: number };
 };
 
 export default function BeforeAfter({ before, after }: BeforeAfterProps) {
