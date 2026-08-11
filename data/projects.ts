@@ -326,4 +326,124 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    // TODO: fill in the remaining sections — placeholder content marked below.
+    slug: "offer-stage",
+    name: "Offer Stage",
+    year: "2026",
+    industry: "B2B Lending • Fintech",
+    featureTypes: ["Redesign"],
+    // Card image shown on the homepage grid. Falls back to heroImage if omitted.
+    cardImage: "/placeholder-card.png",
+    // Grayscale-by-default thumbnail inside the card plate, colored on hover.
+    cardThumb: {
+      src: "/placeholder-thumb.png",
+      hover: "/placeholder-thumb-hover.png",
+      width: 500,
+      height: 307,
+    },
+    summary:
+      "Offer stage is where funding advisors review offers from multiple lenders on a deal and decide what to present to a borrower. A single flat list meant endless scrolling to compare offers.",
+    blocks: [
+      {
+        heading: "",
+        sections: [
+          {
+            type: "beforeAfter",
+            before: { src: "/placeholder-before.png", alt: "Offer stage before the redesign" },
+            after: { src: "/placeholder-after.png", alt: "Offer stage after the redesign" },
+          },
+          {
+            type: "text",
+            content:
+              "Offer stage is where funding advisors review offers from multiple lenders on a deal and decide what to present to a borrower. A single flat list meant endless scrolling to compare offers.",
+          },
+        ],
+      },
+      {
+        heading: "Outcome",
+        sections: [
+          {
+            type: "text",
+            content:
+              "Users can now choose which lenders' offers to expand and which to leave collapsed, instead of scrolling through everything at once. The collapsed view now shows the maximum amount, term, and commission, so there's often no need to expand at all. Bulk actions replace setting a decline reason on each offer one by one, and presorting by amount and commission removes the pagination bug that hid offers past the first page.",
+          },
+        ],
+      },
+      {
+        heading: "Problem",
+        sections: [
+          {
+            type: "text",
+            content:
+              "Some lenders return dozens of offers per submission, and resubmissions double that. A single deal could carry 100+ offers, all listed flat with nothing to collapse. Advisors scrolled through walls of data to compare offers or find the one they needed. Commission and pricing weren't included at the offer stage, so advisors calculated them manually or left the platform to check the lender's portal. Declining or retracting offers for reporting meant setting a reason on each one individually.",
+          },
+        ],
+      },
+      {
+        heading: "What I designed",
+        sections: [
+          {
+            type: "text",
+            content:
+              "I redesigned the offer stage around two ways of browsing the same data, plus a way to act on offers at scale. The direction came from an initial round of interviews with funding advisors. They walked through how they actually work through offers on a deal, what they check first, what they'd normally leave the platform to verify. A second round tested the redesign directly and shaped the details from there.",
+          },
+          {
+            type: "carousel",
+            images: [
+              { src: "/placeholder-section-1-before.jpg", alt: "Offers grouped into a collapsed card per lender" },
+              { src: "/placeholder-section-1-after.jpg", alt: "Lender card summary showing max amount, term, and commission" },
+            ],
+          },
+          {
+            type: "subsection",
+            title: "Grouped by lender.",
+            content:
+              "Offers are organized into a card per lender, collapsed by default. Interviews showed advisors scan for the maximum amount and term first, so the collapsed state shows those numbers instead of ranges. Commission was the most requested addition. Advisors were calculating it manually or checking the lender's portal just to see it, so it's now surfaced in the summary and as a column in the full table. Offers inside each card are presorted by amount and commission, highest first, since that's what advisors look for, instead of adding pagination.",
+          },
+          {
+            type: "carousel",
+            images: [
+              { src: "/placeholder-section-2-a.jpg", alt: "Slider view for amount, term, and commission points" },
+              { src: "/placeholder-section-2-b.jpg", alt: "Commission shown alongside the sliders" },
+            ],
+          },
+          {
+            type: "subsection",
+            title: "Interactive slider view.",
+            content:
+              "A second view lets advisors browse offers using sliders for amount, term, and commission points, instead of scanning a table. Advisors already used similar sliders on lender portals, so the interaction needed no explanation. With commission now visible alongside the sliders, advisors can do this work inside the platform instead of switching over to a lender's portal to check.",
+          },
+          {
+            type: "carousel",
+            images: [
+              { src: "/placeholder-section-3-a.jpg", alt: "Selecting offers across lender groups" },
+              { src: "/placeholder-section-3-b.jpg", alt: "Single decline-reason modal applied to the whole selection" },
+            ],
+          },
+          {
+            type: "subsection",
+            title: "Bulk actions.",
+            content:
+              "Selection works across lender groups, not just within one. This is driven by reporting needs, since declined or retracted offers are tracked differently in advisors' KPIs than offers that simply expired without a status change. Declining offers in bulk opens a single modal with one decline-reason field, applied to the whole selection at once, replacing a one-by-one update. Advisors can also hide a batch of offers from view the same way.",
+          },
+        ],
+      },
+      {
+        heading: "Reflection",
+        sections: [
+          {
+            type: "text",
+            content:
+              "The hardest part was understanding how advisors actually decide what to show a borrower. Not just what they click on, but what they'd normally leave the platform to go check instead. That only got clear once I sat down with advisors directly, instead of guessing from the data model.",
+          },
+          {
+            type: "text",
+            content:
+              "Giving advisors two ways to browse the same offers ended up mattering more than I expected going in. They don't all compare offers the same way, and neither view alone would have covered how differently they actually work.",
+          },
+        ],
+      },
+    ],
+  },
 ];
