@@ -6,12 +6,9 @@ import styles from "./page.module.css";
 import ImageLightbox from "@/components/ImageLightbox";
 import BeforeAfter from "@/components/BeforeAfter";
 import ImageCarousel from "@/components/ImageCarousel";
-import StaticImage from "@/components/StaticImage";
 import { imageSize } from "@/lib/imageSize";
 
 type Props = { params: Promise<{ slug: string }> };
-
-const IMAGE_SIZES = "(max-width: 600px) 100vw, 560px";
 
 /* The file's intrinsic pixel size, read once at build time, so next/image can
    reserve the right height before the image loads — this is what stops the
@@ -102,28 +99,26 @@ export default async function ProjectPage({ params }: Props) {
                       <div key={idx} className={styles.imageGroup}>
                         {section.type === "carousel" ? (
                           <ImageCarousel images={section.images.map(sized)} />
+                        ) : section.type === "image" ? (
+                          <ImageLightbox
+                            src={section.src}
+                            alt={section.alt}
+                            className={styles.image}
+                            wrapClassName={styles.imageWrap}
+                            {...sizeOf(section.src)}
+                          />
                         ) : (
                           <div className={styles.imageWrap}>
-                            {section.type === "image" ? (
-                              <StaticImage
-                                src={section.src}
-                                alt={section.alt}
-                                className={styles.image}
-                                {...sizeOf(section.src)}
-                                sizes={IMAGE_SIZES}
-                              />
-                            ) : (
-                              <video
-                                src={section.src}
-                                className={styles.image}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                aria-label={section.alt}
-                                style={section.scale ? { transform: `scale(${section.scale})` } : undefined}
-                              />
-                            )}
+                            <video
+                              src={section.src}
+                              className={styles.image}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              aria-label={section.alt}
+                              style={section.scale ? { transform: `scale(${section.scale})` } : undefined}
+                            />
                           </div>
                         )}
                         {section.type === "video" && section.caption && (
@@ -171,15 +166,14 @@ export default async function ProjectPage({ params }: Props) {
                     );
                   } else if (section.type === "image") {
                     items.push(
-                      <div key={idx} className={styles.imageWrap}>
-                        <StaticImage
-                          src={section.src}
-                          alt={section.alt}
-                          className={styles.image}
-                          {...sizeOf(section.src)}
-                          sizes={IMAGE_SIZES}
-                        />
-                      </div>
+                      <ImageLightbox
+                        key={idx}
+                        src={section.src}
+                        alt={section.alt}
+                        className={styles.image}
+                        wrapClassName={styles.imageWrap}
+                        {...sizeOf(section.src)}
+                      />
                     );
                   } else if (section.type === "carousel") {
                     items.push(<ImageCarousel key={idx} images={section.images.map(sized)} />);

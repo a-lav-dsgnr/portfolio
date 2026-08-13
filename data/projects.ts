@@ -350,8 +350,8 @@ export const projects: Project[] = [
         sections: [
           {
             type: "beforeAfter",
-            before: { src: "/placeholder-before.png", alt: "Offer stage before the redesign" },
-            after: { src: "/placeholder-after.png", alt: "Offer stage after the redesign" },
+            before: { src: "/Offer Stage-before2.png", alt: "Offer stage before the redesign" },
+            after: { src: "/Offer Stage-after2.png", alt: "Offer stage after the redesign" },
           },
           {
             type: "text",
@@ -389,11 +389,9 @@ export const projects: Project[] = [
               "I redesigned the offer stage around two ways of browsing the same data, plus a way to act on offers at scale. The direction came from an initial round of interviews with funding advisors. They walked through how they actually work through offers on a deal, what they check first, what they'd normally leave the platform to verify. A second round tested the redesign directly and shaped the details from there.",
           },
           {
-            type: "carousel",
-            images: [
-              { src: "/placeholder-section-1-before.jpg", alt: "Offers grouped into a collapsed card per lender" },
-              { src: "/placeholder-section-1-after.jpg", alt: "Lender card summary showing max amount, term, and commission" },
-            ],
+            type: "image",
+            src: "/Grouped by lender.jpg",
+            alt: "Offers grouped into a collapsed card per lender",
           },
           {
             type: "subsection",
