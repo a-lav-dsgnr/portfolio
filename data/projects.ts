@@ -406,11 +406,10 @@ export const projects: Project[] = [
               "Offers are organized into a card per lender, collapsed by default. Interviews showed advisors scan for the maximum amount and term first, so the collapsed state shows those numbers instead of ranges. Commission was the most requested addition. Advisors were calculating it manually or checking the lender's portal just to see it, so it's now surfaced in the summary and as a column in the full table. Offers inside each card are presorted by amount and commission, highest first, since that's what advisors look for, instead of adding pagination.",
           },
           {
-            type: "carousel",
-            images: [
-              { src: "/placeholder-section-2-a.jpg", alt: "Slider view for amount, term, and commission points" },
-              { src: "/placeholder-section-2-b.jpg", alt: "Commission shown alongside the sliders" },
-            ],
+            type: "video",
+            src: "/slider-view.mp4",
+            alt: "Advisor browsing offers with sliders for amount, term, and commission points, with commission shown alongside",
+            caption: "A prototype built with Cursor to show engineers how the chat feature should work.",
           },
           {
             type: "subsection",

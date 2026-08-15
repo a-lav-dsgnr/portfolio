@@ -98,7 +98,7 @@
 .blockBody {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 56px;
 }
 
 .bodyText {
