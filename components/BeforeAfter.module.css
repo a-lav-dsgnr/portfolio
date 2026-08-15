@@ -17,26 +17,47 @@
 }
 
 .toggle {
+  position: relative;
   display: flex;
   width: 120px;
   align-self: center;
   border-bottom: 1px solid var(--border);
 }
 
+/* A single underline that slides between the two tabs, so switching reads as
+   one indicator travelling rather than two borders cross-fading in place. */
+.indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background: var(--fg);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.toggle[data-active="after"] .indicator {
+  transform: translateX(100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator {
+    transition: none;
+  }
+}
+
 .toggleBtn {
   appearance: none;
   border: none;
-  border-bottom: 2px solid transparent;
   background: transparent;
   flex: 1;
-  padding: 6px 0;
-  margin-bottom: -1px;
+  padding: 6px 0 8px;
   font-size: var(--text-ui);
   line-height: 1.4;
   color: var(--fg-muted);
   cursor: pointer;
   text-align: center;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 .toggleBtn:hover {
@@ -46,5 +67,4 @@
 .toggleBtnActive,
 .toggleBtnActive:hover {
   color: var(--fg);
-  border-bottom-color: var(--fg);
 }

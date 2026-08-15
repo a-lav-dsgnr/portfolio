@@ -1,6 +1,7 @@
 export type ProjectSection =
   | { type: "text"; content: string }
   | { type: "bullets"; intro?: string; items: { bold?: string; text: string }[] }
+  | { type: "banner"; text: string }
   | { type: "image"; src: string; alt: string }
   | { type: "carousel"; images: { src: string; alt: string }[] }
   | { type: "video"; src: string; alt: string; poster?: string; scale?: number; caption?: string }
@@ -334,13 +335,13 @@ export const projects: Project[] = [
     industry: "B2B Lending • Fintech",
     featureTypes: ["Redesign"],
     // Card image shown on the homepage grid. Falls back to heroImage if omitted.
-    cardImage: "/placeholder-card.png",
+    cardImage: "/offer-stage-thumbnail-color2.png",
     // Grayscale-by-default thumbnail inside the card plate, colored on hover.
     cardThumb: {
-      src: "/placeholder-thumb.png",
-      hover: "/placeholder-thumb-hover.png",
+      src: "/offer-stage-thumbnail-bw2.png",
+      hover: "/offer-stage-thumbnail-color2.png",
       width: 500,
-      height: 307,
+      height: 298,
     },
     summary:
       "Offer stage is where funding advisors review offers from multiple lenders on a deal and decide what to present to a borrower. A single flat list meant endless scrolling to compare offers.",
@@ -349,9 +350,14 @@ export const projects: Project[] = [
         heading: "",
         sections: [
           {
+            type: "banner",
+            text:
+              "Under NDA, real lender names can't be shown. Throughout this project they appear as “Lender Name.”",
+          },
+          {
             type: "beforeAfter",
-            before: { src: "/Offer Stage-before2.png", alt: "Offer stage before the redesign" },
-            after: { src: "/Offer Stage-after2.png", alt: "Offer stage after the redesign" },
+            before: { src: "/Offer Stage-before3.png", alt: "Offer stage before the redesign" },
+            after: { src: "/Offer Stage-after3.png", alt: "Offer stage after the redesign" },
           },
           {
             type: "text",
@@ -390,7 +396,7 @@ export const projects: Project[] = [
           },
           {
             type: "image",
-            src: "/Grouped by lender.jpg",
+            src: "/Grouped-by-lender.jpg",
             alt: "Offers grouped into a collapsed card per lender",
           },
           {
@@ -413,11 +419,10 @@ export const projects: Project[] = [
               "A second view lets advisors browse offers using sliders for amount, term, and commission points, instead of scanning a table. Advisors already used similar sliders on lender portals, so the interaction needed no explanation. With commission now visible alongside the sliders, advisors can do this work inside the platform instead of switching over to a lender's portal to check.",
           },
           {
-            type: "carousel",
-            images: [
-              { src: "/placeholder-section-3-a.jpg", alt: "Selecting offers across lender groups" },
-              { src: "/placeholder-section-3-b.jpg", alt: "Single decline-reason modal applied to the whole selection" },
-            ],
+            type: "video",
+            src: "/bulk-action2.mov",
+            alt: "Selecting offers across lender groups and declining them in bulk with a single decline-reason modal",
+            caption: "A prototype built with Cursor to show engineers how the chat feature should work.",
           },
           {
             type: "subsection",

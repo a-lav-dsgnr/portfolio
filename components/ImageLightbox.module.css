@@ -2,12 +2,49 @@
   cursor: pointer;
 }
 
-.trigger img {
+/* Single image: fade slightly on hover to signal it opens the lightbox. The
+   :not(.layer) keeps this off the cross-fade stack, whose layers manage their
+   own opacity. */
+.trigger img:not(.layer) {
   transition-property: opacity;
   transition-duration: 0.2s;
   transition-timing-function: ease;
 }
 
-.trigger:hover img {
+.trigger:hover img:not(.layer) {
   opacity: 0.85;
+}
+
+/* Before/After cross-fade. Every variant occupies the same grid cell, so the
+   wrap reserves the image's height and the layers overlap; the active one
+   fades over the others when the toggle changes the index — no hard cut. */
+.stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.stack > * {
+  grid-area: 1 / 1;
+}
+
+.layer {
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.layerShown {
+  opacity: 1;
+}
+
+/* Same "opens the lightbox" affordance as a single image, applied to the whole
+   group so the hidden layer stays hidden while the visible one dims. */
+.trigger:hover .stack {
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer {
+    transition: none;
+  }
 }

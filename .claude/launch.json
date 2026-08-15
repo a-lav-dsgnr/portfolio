@@ -4,9 +4,9 @@
     {
       "name": "portfolio",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3000,
-      "autoPort": false
+      "runtimeArgs": ["run", "dev", "--", "-p", "3200"],
+      "port": 3200,
+      "autoPort": true
     },
     {
       "name": "portfolio-verify",

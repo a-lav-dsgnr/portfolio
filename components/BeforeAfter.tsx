@@ -25,7 +25,12 @@ export default function BeforeAfter({ before, after }: BeforeAfterProps) {
         className={styles.image}
         wrapClassName={styles.imageWrap}
       />
-      <div className={styles.toggle} role="tablist" aria-label="Before and after comparison">
+      <div
+        className={styles.toggle}
+        role="tablist"
+        aria-label="Before and after comparison"
+        data-active={view}
+      >
         <button
           type="button"
           role="tab"
@@ -44,6 +49,7 @@ export default function BeforeAfter({ before, after }: BeforeAfterProps) {
         >
           After
         </button>
+        <span className={styles.indicator} aria-hidden="true" />
       </div>
     </div>
   );

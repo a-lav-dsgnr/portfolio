@@ -43,14 +43,39 @@ export default function ImageLightbox({
   return (
     <>
       <div className={`${wrapClassName ?? ""} ${styles.trigger}`} onClick={() => setOpen(true)}>
-        <StaticImage
-          src={current.src}
-          alt={current.alt}
-          className={className}
-          width={current.width}
-          height={current.height}
-          sizes="(max-width: 600px) 100vw, 560px"
-        />
+        {variants.length > 1 ? (
+          /* Multiple variants (Before/After): stack them so the wrap keeps the
+             image's height, and cross-fade between them when the active index
+             changes instead of hard-cutting the src. */
+          <div className={styles.stack}>
+            {variants.map((variant, i) => (
+              <StaticImage
+                key={variant.src}
+                src={variant.src}
+                alt={i === index ? variant.alt : ""}
+                /* The first layer always stays opaque as a backdrop; only the
+                   layers above it fade. That keeps the composite fully opaque
+                   through the whole cross-fade, so the wrap's grey background
+                   never flashes through mid-transition. */
+                className={`${className ?? ""} ${styles.layer} ${
+                  i === 0 || i === index ? styles.layerShown : ""
+                }`}
+                width={variant.width}
+                height={variant.height}
+                sizes="(max-width: 600px) 100vw, 560px"
+              />
+            ))}
+          </div>
+        ) : (
+          <StaticImage
+            src={current.src}
+            alt={current.alt}
+            className={className}
+            width={current.width}
+            height={current.height}
+            sizes="(max-width: 600px) 100vw, 560px"
+          />
+        )}
       </div>
 
       {open && (

@@ -140,7 +140,23 @@ export default async function ProjectPage({ params }: Props) {
                     continue;
                   }
 
-                  if (section.type === "text") {
+                  if (section.type === "banner") {
+                    items.push(
+                      <aside key={idx} className={styles.banner} role="note">
+                        <svg
+                          className={styles.bannerIcon}
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.4" />
+                          <path d="M8 7.25v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                          <circle cx="8" cy="4.75" r="0.9" fill="currentColor" />
+                        </svg>
+                        <p className={styles.bannerText}>{section.text}</p>
+                      </aside>
+                    );
+                  } else if (section.type === "text") {
                     items.push(<p key={idx} className={styles.bodyText}>{section.content}</p>);
                   } else if (section.type === "bullets") {
                     items.push(

@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import CopyEmail from "@/components/CopyEmail";
-import ComingSoon from "@/components/ComingSoon";
+// import ComingSoon from "@/components/ComingSoon";
 import { projects } from "@/data/projects";
 
 export default function Home() {
@@ -40,7 +40,8 @@ export default function Home() {
             className={styles.inlineLink}
             data-cuelume-hover="tick"
           >
-            <span>email</span>
+            <img src="/email2.svg" alt="" className={styles.linkIcon} aria-hidden="true" />
+            <span className={styles.linkLabel}>email</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </a>
           , or find me on{" "}
@@ -51,7 +52,8 @@ export default function Home() {
             className={styles.inlineLink}
             data-cuelume-hover="tick"
           >
-            <span>linkedIn</span>
+            <img src="/linkedin.svg" alt="" className={styles.linkIcon} aria-hidden="true" />
+            <span className={styles.linkLabel}>linkedIn</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </a>
           . You can also view my{" "}
@@ -60,7 +62,8 @@ export default function Home() {
             className={styles.inlineLink}
             data-cuelume-hover="tick"
           >
-            <span>resume</span>
+            <img src="/resume2.svg" alt="" className={styles.linkIcon} aria-hidden="true" />
+            <span className={styles.linkLabel}>resume</span>
             <span className={styles.linkArrow} aria-hidden="true">↗</span>
           </Link>
           .
@@ -99,7 +102,7 @@ export default function Home() {
               </div>
             </Link>
           ))}
-          <ComingSoon />
+          {/* <ComingSoon /> */}
         </div>
       </section>
 

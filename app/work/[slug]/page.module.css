@@ -131,6 +131,31 @@
   font-weight: 500;
 }
 
+/* NDA / disclaimer banner */
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.bannerIcon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  color: var(--fg-subtle);
+}
+
+.bannerText {
+  font-size: var(--text-ui);
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
 /* Images inside blocks */
 .imageGroup {
   display: flex;
