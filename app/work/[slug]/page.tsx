@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import ImageLightbox from "@/components/ImageLightbox";
 import BeforeAfter from "@/components/BeforeAfter";
 import ImageCarousel from "@/components/ImageCarousel";
+import LazyVideo from "@/components/LazyVideo";
 import { imageSize } from "@/lib/imageSize";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -109,15 +110,12 @@ export default async function ProjectPage({ params }: Props) {
                           />
                         ) : (
                           <div className={styles.imageWrap}>
-                            <video
+                            <LazyVideo
                               src={section.src}
+                              alt={section.alt}
                               className={styles.image}
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              aria-label={section.alt}
-                              style={section.scale ? { transform: `scale(${section.scale})` } : undefined}
+                              poster={section.poster}
+                              scale={section.scale}
                             />
                           </div>
                         )}
@@ -197,15 +195,12 @@ export default async function ProjectPage({ params }: Props) {
                     items.push(
                       <div key={idx} className={styles.imageGroup}>
                         <div className={styles.imageWrap}>
-                          <video
+                          <LazyVideo
                             src={section.src}
+                            alt={section.alt}
                             className={styles.image}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            aria-label={section.alt}
-                            style={section.scale ? { transform: `scale(${section.scale})` } : undefined}
+                            poster={section.poster}
+                            scale={section.scale}
                           />
                         </div>
                         {section.caption && (

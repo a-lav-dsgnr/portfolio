@@ -14,7 +14,7 @@ export default function Home() {
         <div className={styles.heroTop}>
           <div className={styles.avatar}>
             <Image
-              src="/avatar1.jpg"
+              src="/avatar2.png"
               alt="Anastasiia Lavrentii"
               fill
               className={styles.photoImg}
