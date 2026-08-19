@@ -29,13 +29,13 @@ const experience: Role[] = [
     company: "Lendflow",
     dates: "Jun 2024 – Present",
     bullets: [
-      "Design core interfaces for funding advisors and underwriters on a B2B embedded lending infrastructure platform",
-      "Designed a command interface that made it possible to invoke AI agents, including one specifically for email, which helped cut manual inbox handling by 61% and first-response time by 67%",
-      "Own design end-to-end (research, prototyping, UI, and developer handoff), using Claude, Cursor, and Granola to speed up concepting and analysis",
-      "Build interactive prototypes instead of static screens to walk through complex flows",
-      "Expand and modernize an outdated design system alongside developers",
-      "Maintain the product's visual and marketing consistency, including campaign work",
-      "Drive day-to-day stakeholder communication and align product strategy with PMs and engineers",
+      "Design core interfaces for funding advisors and underwriters on a B2B embedded lending infrastructure platform, turning complex lending and underwriting workflows into clear, usable products",
+      "Designed a command interface for invoking AI agents, including a dedicated email agent, cutting manual inbox handling by 61% and first-response time by 67%",
+      "Redesigned the lender offer review flow, significantly reducing review time for funding advisors",
+      "Own design end-to-end (research, prototyping, UI, and developer handoff), using Claude, Cursor, and Granola to speed up concepting and analysis, and build interactive prototypes instead of static screens to pressure-test complex flows",
+      "Expand and modernize a legacy design system in close collaboration with developers",
+      "Maintain product and marketing visual consistency, including campaign work",
+      "Drive day-to-day stakeholder communication, aligning product strategy with PMs and engineers",
     ],
   },
   {
@@ -83,14 +83,14 @@ const experience: Role[] = [
 ];
 
 const abilities = [
-  "Wireframing & Prototyping",
   "Usability Testing",
-  "Design Systems",
-  "Product Strategy",
   "User Research",
-  "Analytics",
+  "Design Systems",
+  "Wireframing & Prototyping",
+  "Product Strategy",
   "Information Architecture",
   "A/B Testing",
+  "Analytics",
   "Mobile Design",
   "Cross-Functional Collaboration",
 ];
