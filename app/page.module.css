@@ -195,13 +195,34 @@
 .photoSlot {
   position: relative;
   aspect-ratio: 3 / 4;
+  transform-origin: center bottom;
+  transition-property: transform;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The lift's shadow lives on a pseudo-element so hover fades its `opacity`
+   (compositor) instead of animating `box-shadow` (a paint property) each
+   frame. It sits outside .photoClip's overflow so the blur isn't clipped. */
+.photoSlot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+/* Clips the image (and its hover scale) to the rounded card; kept separate
+   from .photoSlot so the shadow above can escape the clip. */
+.photoClip {
+  position: absolute;
+  inset: 0;
   border-radius: 8px;
   overflow: hidden;
   background-color: var(--border);
-  transform-origin: center bottom;
-  transition-property: transform, box-shadow;
-  transition-duration: 0.4s;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Hover: the photo lifts out like a card being pulled from the stack.
@@ -209,7 +230,10 @@
 .photoSlot:hover {
   transform: translateY(-10px) scale(1.12) rotate(-3deg);
   z-index: 3;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.photoSlot:hover::after {
+  opacity: 1;
 }
 
 /* Alternate the tilt direction for a natural, fanned feel. */
@@ -226,17 +250,6 @@
 
 .photoSlot:hover .photoImg {
   transform: scale(1.04);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .photoSlot,
-  .photoImg {
-    transition: none;
-  }
-  .photoSlot:hover,
-  .photoSlot:nth-child(2n):hover {
-    transform: none;
-  }
 }
 
 /* ── CONTACT ── */

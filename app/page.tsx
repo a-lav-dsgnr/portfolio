@@ -17,6 +17,7 @@ export default function Home() {
               src="/avatar2.png"
               alt="Anastasiia Lavrentii"
               fill
+              priority
               className={styles.photoImg}
               sizes="80px"
             />
@@ -135,13 +136,15 @@ export default function Home() {
           <div className={styles.photoGrid}>
             {[1, 2, 3, 4].map((n) => (
               <div key={n} className={styles.photoSlot}>
-                <Image
-                  src={`/photo-${n}.jpg`}
-                  alt=""
-                  fill
-                  className={styles.photoImg}
-                  sizes="(max-width: 600px) 50vw, 25vw"
-                />
+                <div className={styles.photoClip}>
+                  <Image
+                    src={`/photo-${n}.jpg`}
+                    alt=""
+                    fill
+                    className={styles.photoImg}
+                    sizes="(max-width: 600px) 50vw, 25vw"
+                  />
+                </div>
               </div>
             ))}
           </div>

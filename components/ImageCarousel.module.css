@@ -16,7 +16,7 @@
   overflow: hidden;
   border-radius: 8px;
   cursor: pointer;
-  transition: flex-basis 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: flex-basis 0.45s cubic-bezier(0.5, 0, 0.1, 1);
 }
 
 .slide:focus-visible {
@@ -46,9 +46,11 @@
   width: 100%;
   height: auto;
   display: block;
+  /* Matched to the slide's resize so the crop sharpens in step with the
+     expansion instead of snapping clear early. */
   transition-property: opacity, filter, transform;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.5, 0, 0.1, 1);
 }
 
 /* Slightly out of focus while collapsed, so the strip reads as background.
@@ -59,7 +61,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slide {
+  .slide,
+  .image {
     transition: none;
   }
 }
