@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 import ImageLightbox from "@/components/ImageLightbox";
 import BeforeAfter from "@/components/BeforeAfter";
 import ImageCarousel from "@/components/ImageCarousel";
-import LazyVideo from "@/components/LazyVideo";
+import VideoLightbox from "@/components/VideoLightbox";
 import { imageSize } from "@/lib/imageSize";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -109,15 +109,14 @@ export default async function ProjectPage({ params }: Props) {
                             {...sizeOf(section.src)}
                           />
                         ) : (
-                          <div className={styles.imageWrap}>
-                            <LazyVideo
-                              src={section.src}
-                              alt={section.alt}
-                              className={styles.image}
-                              poster={section.poster}
-                              scale={section.scale}
-                            />
-                          </div>
+                          <VideoLightbox
+                            src={section.src}
+                            alt={section.alt}
+                            className={styles.image}
+                            wrapClassName={styles.imageWrap}
+                            poster={section.poster}
+                            scale={section.scale}
+                          />
                         )}
                         {section.type === "video" && section.caption && (
                           <p className={styles.caption}>{section.caption}</p>
@@ -194,15 +193,14 @@ export default async function ProjectPage({ params }: Props) {
                   } else if (section.type === "video") {
                     items.push(
                       <div key={idx} className={styles.imageGroup}>
-                        <div className={styles.imageWrap}>
-                          <LazyVideo
-                            src={section.src}
-                            alt={section.alt}
-                            className={styles.image}
-                            poster={section.poster}
-                            scale={section.scale}
-                          />
-                        </div>
+                        <VideoLightbox
+                          src={section.src}
+                          alt={section.alt}
+                          className={styles.image}
+                          wrapClassName={styles.imageWrap}
+                          poster={section.poster}
+                          scale={section.scale}
+                        />
                         {section.caption && (
                           <p className={styles.caption}>{section.caption}</p>
                         )}

@@ -9,6 +9,10 @@ export type LightboxImage = {
   label?: string;
   width?: number;
   height?: number;
+  /* "video" swaps the <img> for a <video> with controls. Defaults to image. */
+  kind?: "image" | "video";
+  /* First-frame image shown for a video before it can play. */
+  poster?: string;
 };
 
 type Props = {
@@ -121,11 +125,28 @@ export default function Lightbox({ images, index, onSelect, onClose }: Props) {
       )}
 
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
-        <img
-          src={current.src}
-          alt={current.alt}
-          className={`${styles.fullImg} ${phase === "open" ? styles.fullImgVisible : ""} ${phase === "exiting" ? styles.fullImgExiting : ""}`}
-        />
+        {current.kind === "video" ? (
+          <video
+            key={current.src}
+            src={current.src}
+            poster={current.poster}
+            className={`${styles.fullImg} ${phase === "open" ? styles.fullImgVisible : ""} ${phase === "exiting" ? styles.fullImgExiting : ""}`}
+            controls
+            autoPlay
+            loop
+            /* Muted so autoPlay is never blocked — these clips are silent UI
+               recordings; the user can unmute from the controls. */
+            muted
+            playsInline
+            aria-label={current.alt}
+          />
+        ) : (
+          <img
+            src={current.src}
+            alt={current.alt}
+            className={`${styles.fullImg} ${phase === "open" ? styles.fullImgVisible : ""} ${phase === "exiting" ? styles.fullImgExiting : ""}`}
+          />
+        )}
       </div>
     </div>
   );

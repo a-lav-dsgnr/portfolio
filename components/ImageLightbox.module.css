@@ -15,6 +15,17 @@
   opacity: 0.85;
 }
 
+/* Same affordance for a video trigger (VideoLightbox). */
+.trigger video {
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+.trigger:hover video {
+  opacity: 0.85;
+}
+
 /* Before/After cross-fade. Every variant occupies the same grid cell, so the
    wrap reserves the image's height and the layers overlap; the active one
    fades over the others when the toggle changes the index — no hard cut. */
