@@ -7,6 +7,7 @@ import ImageLightbox from "@/components/ImageLightbox";
 import BeforeAfter from "@/components/BeforeAfter";
 import ImageCarousel from "@/components/ImageCarousel";
 import VideoLightbox from "@/components/VideoLightbox";
+import StaticImage from "@/components/StaticImage";
 import { imageSize } from "@/lib/imageSize";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -77,17 +78,32 @@ export default async function ProjectPage({ params }: Props) {
       )}
 
       {/* Content blocks */}
-      {project.blocks.map((block) => (
+      {project.blocks.map((block) => {
+        /* A leading bare illustration is hoisted above the heading so it reads
+           as part of the section, not as a figure inside its body. */
+        const lead = block.sections[0];
+        const leadImage = lead?.type === "image" && lead.bare ? lead : null;
+        const bodySections = leadImage ? block.sections.slice(1) : block.sections;
+        return (
         <section key={block.heading} className={styles.block}>
           <div className={styles.blockInner}>
+            {leadImage && (
+              <StaticImage
+                src={leadImage.src}
+                alt={leadImage.alt}
+                className={`${styles.bareImage} ${styles.leadImage}`}
+                sizes="(max-width: 600px) 100vw, 560px"
+                {...sizeOf(leadImage.src)}
+              />
+            )}
             {block.heading && <h2 className={styles.blockHeading}>{block.heading}</h2>}
             <div className={styles.blockBody}>
               {(() => {
                 const items = [];
                 let idx = 0;
-                while (idx < block.sections.length) {
-                  const section = block.sections[idx];
-                  const next = block.sections[idx + 1];
+                while (idx < bodySections.length) {
+                  const section = bodySections[idx];
+                  const next = bodySections[idx + 1];
 
                   if (
                     (section.type === "image" ||
@@ -179,14 +195,25 @@ export default async function ProjectPage({ params }: Props) {
                     );
                   } else if (section.type === "image") {
                     items.push(
-                      <ImageLightbox
-                        key={idx}
-                        src={section.src}
-                        alt={section.alt}
-                        className={styles.image}
-                        wrapClassName={styles.imageWrap}
-                        {...sizeOf(section.src)}
-                      />
+                      section.bare ? (
+                        <StaticImage
+                          key={idx}
+                          src={section.src}
+                          alt={section.alt}
+                          className={styles.bareImage}
+                          sizes="(max-width: 600px) 100vw, 560px"
+                          {...sizeOf(section.src)}
+                        />
+                      ) : (
+                        <ImageLightbox
+                          key={idx}
+                          src={section.src}
+                          alt={section.alt}
+                          className={styles.image}
+                          wrapClassName={styles.imageWrap}
+                          {...sizeOf(section.src)}
+                        />
+                      )
                     );
                   } else if (section.type === "carousel") {
                     items.push(<ImageCarousel key={idx} images={section.images.map(sized)} />);
@@ -228,7 +255,8 @@ export default async function ProjectPage({ params }: Props) {
             </div>
           </div>
         </section>
-      ))}
+        );
+      })}
     </article>
   );
 }

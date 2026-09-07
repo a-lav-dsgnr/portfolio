@@ -175,6 +175,23 @@
   display: block;
 }
 
+/* Illustration that reads as part of the interface: no frame, no plate.
+   Also opts out of the global hairline `img` outline. */
+.bareImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+}
+
+/* Hoisted above the heading: 16px blockInner gap + 24px = 40px to the title. */
+.leadImage {
+  margin-bottom: 24px;
+}
+
 .caption {
   font-size: var(--text-ui);
   color: var(--fg-muted);

@@ -2,7 +2,7 @@ export type ProjectSection =
   | { type: "text"; content: string }
   | { type: "bullets"; intro?: string; items: { bold?: string; text: string }[] }
   | { type: "banner"; text: string }
-  | { type: "image"; src: string; alt: string }
+  | { type: "image"; src: string; alt: string; bare?: boolean }
   | { type: "carousel"; images: { src: string; alt: string }[] }
   | { type: "video"; src: string; alt: string; poster?: string; scale?: number; caption?: string }
   | {
@@ -239,12 +239,23 @@ export const projects: Project[] = [
           {
             type: "text",
             content:
-              "The Data Orchestration Outcome block sat at the top of the underwriting stage and displayed every condition by default, regardless of status. Funding advisors and underwriters reviewed the same information on every deal even when most conditions had passed, and the density of the block made it slower to read than the manual verification it was meant to replace.",
+              "The Data Orchestration Outcome block sat at the top of the underwriting stage and showed every term by default, whatever its status. Funding advisors and underwriters read through the same information on every deal, even when most checks had passed. The block was so dense that reading it took longer than the manual review it was meant to replace. External clients could not follow the table even after a funding advisor walked them through it.",
           },
+        ],
+      },
+      {
+        heading: "Design Process",
+        sections: [
           {
             type: "text",
             content:
-              "Interviewed funding advisors and underwriters to understand where the block fit into their workflow and where it was costing time. Four issues came up consistently. Failure reasons were shown as internal attribute codes rather than plain language. The block obscured the data sources users relied on for verification, so most participants bypassed orchestration and verified each source manually. Everyone described the same reading order — bottom to top, failed conditions first, passed conditions skipped. And once a failure was identified, reaching the relevant attribute or supporting document required several navigation steps across unrelated screens.",
+              "I started with the obvious and streamlined the table itself. At the design review with the CEO, product managers, and engineers I picked up more context on the task, and clear feedback: the new version was too close to the current one.",
+          },
+          {
+            type: "image",
+            src: "/design-process-doo-1.svg?v=3",
+            alt: "Early design exploration streamlining the Data Orchestration Outcome table",
+            bare: true,
           },
         ],
       },
