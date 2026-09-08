@@ -113,6 +113,11 @@
 }
 
 /* Bullets */
+.bulletGroup:not(:first-child) {
+  /* Pull the list up from the 56px blockBody gap to 24px */
+  margin-top: -32px;
+}
+
 .bulletList {
   display: flex;
   flex-direction: column;
@@ -187,9 +192,11 @@
   outline: none;
 }
 
-/* Hoisted above the heading: 16px blockInner gap + 24px = 40px to the title. */
+/* Hoisted above the heading. Top: 40px block padding + 16px = 56px to the
+   divider. Bottom: 16px blockInner gap + 40px = 56px to the title. */
 .leadImage {
-  margin-bottom: 24px;
+  margin-top: 16px;
+  margin-bottom: 40px;
 }
 
 .caption {

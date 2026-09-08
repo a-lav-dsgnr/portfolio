@@ -173,7 +173,7 @@ export default async function ProjectPage({ params }: Props) {
                     items.push(<p key={idx} className={styles.bodyText}>{section.content}</p>);
                   } else if (section.type === "bullets") {
                     items.push(
-                      <div key={idx}>
+                      <div key={idx} className={styles.bulletGroup}>
                         {section.intro && <p className={styles.bodyText}>{section.intro}</p>}
                         <ul className={styles.bulletList}>
                           {section.items.map((item, j) => (

@@ -35,9 +35,9 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "command-bar",
-    name: "Command Panel",
+    name: "Building the Command Panel",
     industry: "B2B Lending • Fintech",
-    featureTypes: ["From Scratch", "Optimization"],
+    featureTypes: ["From Scratch"],
     year: "2025",
     heroImage: "/Command-Panel.jpg?v=2",
     cardThumb: {
@@ -194,7 +194,7 @@ export const projects: Project[] = [
   },
   {
     slug: "data-orchestration",
-    name: "Data Orchestration Outcome",
+    name: "Redesigning the Data Orchestration Outcome",
     year: "2026",
     industry: "B2B Lending • Fintech",
     featureTypes: ["Redesign"],
@@ -247,15 +247,51 @@ export const projects: Project[] = [
         heading: "Design Process",
         sections: [
           {
+            type: "image",
+            src: "/design-process-doo-1.svg?v=3",
+            alt: "Early design exploration streamlining the Data Orchestration Outcome table",
+            bare: true,
+          },
+          {
             type: "text",
             content:
               "I started with the obvious and streamlined the table itself. At the design review with the CEO, product managers, and engineers I picked up more context on the task, and clear feedback: the new version was too close to the current one.",
           },
           {
+            type: "subsection",
+            title: "Interviews instead of assumptions.",
+            content:
+              "I interviewed funding advisors and underwriters to see how they actually work with this block. Only two things turned out to matter. What went wrong, and where in the deal it went wrong. The rest of the data is rarely needed and gets requested case by case.",
+          },
+          {
+            type: "bullets",
+            intro: "The interviews surfaced other problems.",
+            items: [
+              {
+                text: "Error causes were shown as internal attribute codes, not plain language.",
+              },
+              {
+                text: "The module overrode the data sources people relied on for verification, so most participants skipped the orchestration and checked each source by hand.",
+              },
+              {
+                text: "Everyone read in the same order, bottom to top. They looked at failed conditions first and skipped the ones that passed.",
+              },
+              {
+                text: "Once someone found an error, they had to move through several unrelated screens to reach the relevant attribute or document.",
+              },
+            ],
+          },
+          {
             type: "image",
-            src: "/design-process-doo-1.svg?v=3",
-            alt: "Early design exploration streamlining the Data Orchestration Outcome table",
+            src: "/meme-doo.jpg",
+            alt: "The Matrix red pill / blue pill choice",
             bare: true,
+          },
+          {
+            type: "subsection",
+            title: "Communication with developers.",
+            content:
+              "At the last design review we split the feature into two parts. In my design, each attribute linked directly to its field in the agreement. The engineers said that would take longer to build, so the first version links to the page where the error occurred, and highlighting the specific element moved to the next release. That kept implementation on schedule.",
           },
         ],
       },
@@ -341,10 +377,10 @@ export const projects: Project[] = [
   {
     // TODO: fill in the remaining sections — placeholder content marked below.
     slug: "offer-stage",
-    name: "Offer Stage",
+    name: "Evolving the Offer Stage",
     year: "2026",
     industry: "B2B Lending • Fintech",
-    featureTypes: ["Redesign"],
+    featureTypes: ["Feature Evolution"],
     // Card image shown on the homepage grid. Falls back to heroImage if omitted.
     cardImage: "/offer-stage-thumbnail-color2.png",
     // Grayscale-by-default thumbnail inside the card plate, colored on hover.
