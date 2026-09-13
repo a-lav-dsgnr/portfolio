@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects } from "@/data/projects";
+import { projects, type CaptionPart } from "@/data/projects";
 import styles from "./page.module.css";
 import ImageLightbox from "@/components/ImageLightbox";
 import BeforeAfter from "@/components/BeforeAfter";
@@ -23,6 +23,22 @@ function sizeOf(src: string): { width: number; height: number } {
 
 function sized<T extends { src: string }>(img: T): T & { width: number; height: number } {
   return { ...img, ...sizeOf(img.src) };
+}
+
+function Caption({ parts }: { parts: CaptionPart[] }) {
+  return (
+    <p className={styles.caption}>
+      {parts.map((part, i) =>
+        typeof part === "string" ? (
+          part
+        ) : (
+          <a key={i} href={part.href} target="_blank" rel="noopener noreferrer">
+            {part.text}
+          </a>
+        )
+      )}
+    </p>
+  );
 }
 
 export async function generateStaticParams() {
@@ -136,6 +152,9 @@ export default async function ProjectPage({ params }: Props) {
                         )}
                         {section.type === "video" && section.caption && (
                           <p className={styles.caption}>{section.caption}</p>
+                        )}
+                        {section.type === "image" && section.caption && (
+                          <Caption parts={section.caption} />
                         )}
                         <Fragment>
                           {paragraphs.map((paragraph, j) => (

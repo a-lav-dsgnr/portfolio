@@ -1,8 +1,11 @@
+/** A run of caption text; a part with an `href` renders as a link. */
+export type CaptionPart = string | { text: string; href: string };
+
 export type ProjectSection =
   | { type: "text"; content: string }
   | { type: "bullets"; intro?: string; items: { bold?: string; text: string }[] }
   | { type: "banner"; text: string }
-  | { type: "image"; src: string; alt: string; bare?: boolean }
+  | { type: "image"; src: string; alt: string; bare?: boolean; caption?: CaptionPart[] }
   | { type: "carousel"; images: { src: string; alt: string }[] }
   | { type: "video"; src: string; alt: string; poster?: string; scale?: number; caption?: string }
   | {
@@ -256,6 +259,13 @@ export const projects: Project[] = [
             type: "text",
             content:
               "I started with the obvious and streamlined the table itself. At the design review with the CEO, product managers, and engineers I picked up more context on the task, and clear feedback: the new version was too close to the current one.",
+          },
+          {
+            type: "image",
+            src: "/granola2.jpg",
+            alt: "Granola notes from the funding advisor and underwriter interviews",
+            bare: true,
+            caption: ["Some first and last names have been hidden for privacy reasons"],
           },
           {
             type: "subsection",
