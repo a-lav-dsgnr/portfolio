@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Resume — Anastasiia Lavrentii",
   description:
-    "Senior Product Designer with 5+ years across fintech, SaaS, real estate, and food tech.",
+    "Senior Product Designer, 5+ years in complex B2B (fintech, SaaS). Turns dense expert workflows into usable interfaces and scalable design systems.",
 };
 
 const contacts = [
@@ -16,39 +16,35 @@ const contacts = [
   { label: "lav.dsgnr@gmail.com", href: "mailto:lav.dsgnr@gmail.com" },
 ];
 
+const summary =
+  "Senior Product Designer, 5+ years in complex B2B (fintech, SaaS). Turns dense expert workflows into usable interfaces and scalable design systems. Recently focused on AI-native, agentic UX, including shipped work that cut manual inbox handling by 61%.";
+
 type Role = {
   title: string;
   company: string;
   dates: string;
+  client?: string;
   bullets: string[];
+  otherProjects?: string[];
 };
 
 const experience: Role[] = [
   {
     title: "Senior Product Designer",
-    company: "Lendflow",
-    dates: "Jun 2024 – Present",
-    bullets: [
-      "Design core interfaces for funding advisors and underwriters on a B2B embedded lending infrastructure platform, turning complex lending and underwriting workflows into clear, usable products",
-      "Designed a command interface for invoking AI agents, including a dedicated email agent, cutting manual inbox handling by 61% and first-response time by 67%",
-      "Redesigned the lender offer review flow, significantly reducing review time for funding advisors",
-      "Own design end-to-end (research, prototyping, UI, and developer handoff), using Claude, Cursor, and Granola to speed up concepting and analysis, and build interactive prototypes instead of static screens to pressure-test complex flows",
-      "Expand and modernize a legacy design system in close collaboration with developers",
-      "Maintain product and marketing visual consistency, including campaign work",
-      "Drive day-to-day stakeholder communication, aligning product strategy with PMs and engineers",
-    ],
-  },
-  {
-    title: "Senior Product Designer",
     company: "Glow Design Agency",
     dates: "Mar 2023 – Present",
+    client: "Lendflow, August 2024 – Present",
     bullets: [
-      "Designed end-to-end B2B SaaS products in fintech and workplace management within cross-functional teams, balancing business goals and user needs",
-      "Redesigned existing features and created new ones, improving usability and driving conversion at the booking and onboarding stages",
-      "Conducted user interviews, usability testing, and card sorting to uncover pain points and validate design decisions",
-      "Evolved the design system and selected handoff tools for smooth implementation by developers",
-      "Created documentation and used coding tools to demonstrate feature functionality",
-      "Tracked analytics and user behavior to improve experiences and drive feature adoption",
+      "Own end-to-end design of the core interfaces funding advisors and underwriters work in on a B2B embedded-lending platform, from independent research and prototyping through UI. Most of the job is making dense underwriting workflows usable.",
+      "Designed a command interface for invoking AI agents, including one specifically for email, cutting manual inbox handling by 61% and first-response time by 67%.",
+      "Built interactive, AI-assisted prototypes in Claude and Cursor to walk stakeholders through complex flows, which got alignment and sign-off faster.",
+      "Modernized a legacy design system with developers by adding reusable components and tokens, which removed inconsistencies and sped up UI delivery.",
+      "Redesigned the lender offer review flow, cutting review time for funding advisors.",
+      "Work daily with CEO, PMs, and engineers to align on strategy and settle technical trade-offs early.",
+    ],
+    otherProjects: [
+      "Redesigned booking and onboarding flows, which improved usability and lifted conversion at the main drop-off points.",
+      "Combined user research (interviews, usability tests, card sorting) with behavioral analytics from FullStory and PostHog to surface pain points and validate design decisions.",
     ],
   },
   {
@@ -56,9 +52,8 @@ const experience: Role[] = [
     company: "AppCake",
     dates: "Jun 2022 – Feb 2023",
     bullets: [
-      "Built cross-platform mobile applications for iOS, Android, and Unity, and redesigned apps across utilities, game guides, and health categories",
-      "Created App Store and Google Play assets, including feature banners, app screenshots, subscription onboarding screens, and application icons",
-      "Contributed to a 7.5% improvement in user engagement",
+      "Designed cross-platform mobile apps (iOS, Android, Unity) across utilities, game-guide, and health categories.",
+      "Redesigned subscription-onboarding screens and store assets that contributed to a 7.5% increase in user engagement.",
     ],
   },
   {
@@ -77,34 +72,53 @@ const experience: Role[] = [
     company: "ULTIMA",
     dates: "Mar 2021 – Oct 2021",
     bullets: [
-      "Developed marketing creatives for social networks that increased sales conversions",
+      "Designed social-media marketing creatives that increased sales conversions",
     ],
   },
 ];
 
-const abilities = [
-  "Usability Testing",
-  "User Research",
-  "Design Systems",
-  "Wireframing & Prototyping",
-  "Product Strategy",
-  "Information Architecture",
-  "A/B Testing",
-  "Analytics",
-  "Mobile Design",
-  "Cross-Functional Collaboration",
+const skillColumns: string[][] = [
+  [
+    "Product Strategy & business impact",
+    "Design Systems",
+    "Complex & data-dense workflow design",
+    "User Research (B2B / expert users)",
+    "Usability Testing",
+    "Interactive prototyping (incl. AI-assisted)",
+  ],
+  [
+    "Data-driven design & impact measurement (A/B testing, product metrics)",
+    "Information Architecture",
+    "Systems Thinking",
+    "Visual & interaction design",
+    "Cross-functional collaboration & stakeholder management",
+    "AI-assisted design workflows",
+  ],
 ];
 
-const tools = [
-  "Figma",
-  "Cursor",
-  "FigJam",
-  "Miro",
-  "Github",
-  "FullStory",
-  "Notion",
-  "Claude Code",
-  "Claude",
+type ToolGroup = { label: string; items: string[] };
+
+const toolColumns: ToolGroup[][] = [
+  [
+    { label: "Design", items: ["Figma", "FigJam", "Miro"] },
+    { label: "AI", items: ["Claude", "Claude Code", "Cursor"] },
+  ],
+  [
+    { label: "Analytics", items: ["FullStory", "PostHog"] },
+    { label: "Collaboration & dev", items: ["GitHub", "Notion"] },
+  ],
+];
+
+type Course = {
+  name: string;
+  issuer: string;
+  dates: string;
+};
+
+const courses: Course[] = [
+  { name: "Product Design Process", issuer: "noticelittlethings", dates: "Nov 2025" },
+  { name: "Usability Testing Workshop", issuer: "noticelittlethings", dates: "Apr 2025" },
+  { name: "Product Design Course", issuer: "Projector Institute", dates: "Jun 2023 – Oct 2023" },
 ];
 
 function ArrowLeft() {
@@ -193,6 +207,13 @@ export default function Resume() {
 
       {/* ── BODY ── */}
       <div className={styles.body}>
+        <section className={styles.row}>
+          <div className={styles.rowLead}>
+            <h2 className={styles.groupLabel}>Summary</h2>
+          </div>
+          <p className={styles.skills}>{summary}</p>
+        </section>
+
         {experience.map((job) => (
           <article key={job.company} className={styles.row}>
             <div className={styles.rowLead}>
@@ -201,11 +222,24 @@ export default function Resume() {
               </h2>
               <p className={styles.jobDates}>{job.dates}</p>
             </div>
-            <ul className={styles.bullets}>
-              {job.bullets.map((b) => (
-                <li key={b}>{b}</li>
-              ))}
-            </ul>
+            <div className={styles.rowContent}>
+              {job.client && <p className={styles.clientLine}>{job.client}</p>}
+              <ul className={styles.bullets}>
+                {job.bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+              {job.otherProjects && (
+                <div className={styles.subGroup}>
+                  <h3 className={styles.subGroupLabel}>Other Projects</h3>
+                  <ul className={styles.bullets}>
+                    {job.otherProjects.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </article>
         ))}
 
@@ -213,16 +247,51 @@ export default function Resume() {
 
         <section className={styles.row}>
           <div className={styles.rowLead}>
-            <h2 className={styles.groupLabel}>Abilities</h2>
+            <h2 className={styles.groupLabel}>Skills</h2>
           </div>
-          <p className={styles.skills}>{abilities.join(", ")}</p>
+          <div className={styles.group}>
+            {skillColumns.map((col, i) => (
+              <ul key={i} className={styles.bullets}>
+                {col.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </section>
 
         <section className={styles.row}>
           <div className={styles.rowLead}>
-            <h2 className={styles.groupLabel}>Design &amp; Prototyping</h2>
+            <h2 className={styles.groupLabel}>Tools</h2>
           </div>
-          <p className={styles.skills}>{tools.join(", ")}</p>
+          <div className={styles.group}>
+            {toolColumns.map((col, i) => (
+              <div key={i} className={styles.toolCol}>
+                {col.map((group) => (
+                  <p key={group.label} className={styles.skills}>
+                    <span className={styles.toolGroupLabel}>{group.label}:</span>{" "}
+                    {group.items.join(", ")}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.row}>
+          <div className={styles.rowLead}>
+            <h2 className={styles.groupLabel}>Courses &amp; Certification</h2>
+          </div>
+          <div className={styles.courses}>
+            {courses.map((c) => (
+              <div key={c.name} className={styles.courseRow}>
+                <span>
+                  {c.name} · {c.issuer}
+                </span>
+                <span className={styles.courseDates}>{c.dates}</span>
+              </div>
+            ))}
+          </div>
         </section>
       </div>
     </div>

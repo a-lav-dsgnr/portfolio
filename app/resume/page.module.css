@@ -123,16 +123,17 @@
 }
 
 .row {
-  display: grid;
-  grid-template-columns: 190px 1fr;
-  column-gap: 24px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .rowLead {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-flow: row wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
 }
 
 .jobTitle {
@@ -196,6 +197,72 @@
   background-color: var(--border);
 }
 
+/* ── EXPERIENCE: client line + Other Projects sub-block ── */
+.rowContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.clientLine {
+  font-size: var(--text-ui);
+  font-weight: 500;
+  color: var(--fg-muted);
+  margin-bottom: 12px;
+}
+
+.subGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.subGroupLabel {
+  font-size: var(--text-ui);
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+/* ── SKILLS / TOOLS layout: two columns, matching the CV ── */
+.group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+}
+
+.toolCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toolGroupLabel {
+  color: var(--fg-subtle);
+}
+
+/* ── COURSES & CERTIFICATION ── */
+.courses {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.courseRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: var(--text-body);
+  color: var(--fg-muted);
+}
+
+.courseDates {
+  flex-shrink: 0;
+  font-size: var(--text-ui);
+  color: var(--fg-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ── MOBILE ── */
 @media (max-width: 640px) {
   .page {
@@ -219,9 +286,9 @@
     gap: 36px;
   }
 
-  /* A 190px label column starves the bullets on a phone — stack instead. */
-  .row {
+  /* Two-up skills/tools columns need full width to stay readable. */
+  .group {
     grid-template-columns: 1fr;
-    row-gap: 14px;
+    row-gap: 20px;
   }
 }
