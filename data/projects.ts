@@ -13,7 +13,9 @@ export type ProjectSection =
       before: { src: string; alt: string };
       after: { src: string; alt: string };
     }
-  | { type: "subsection"; title: string; content: string | string[] };
+  | { type: "subsection"; title: string; content: string | string[] }
+  /** Stand-in plate for a screenshot that hasn't been exported yet. */
+  | { type: "placeholder"; label: string };
 
 export type ProjectBlock = {
   heading: string;
@@ -26,6 +28,10 @@ export type Project = {
   industry: string;
   featureTypes: string[];
   year: string;
+  /** Keep `year` for sorting on the homepage but leave it out of the header. */
+  hideYear?: boolean;
+  /** Extra header rows after Year, e.g. Company, Services, Tools. */
+  extraMeta?: { key: string; value: CaptionPart[] }[];
   summary: string;
   heroImage?: string;
   /** Thumbnail for the project card on the homepage. Falls back to heroImage. */
@@ -501,6 +507,98 @@ export const projects: Project[] = [
             content:
               "Giving advisors two ways to browse the same offers ended up mattering more than I expected going in. They don't all compare offers the same way, and neither view alone would have covered how differently they actually work.",
           },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "lendflow-web-marketing",
+    name: "Lendflow Website & Marketing",
+    industry: "B2B Lending • Fintech",
+    featureTypes: ["Web & Marketing Design"],
+    year: "2025",
+    hideYear: true,
+    heroImage: "/website-01.jpg",
+    cardThumb: {
+      src: "/lendflow-thumbnail-bw.png",
+      hover: "/lendflow-thumbnail-color.png",
+      width: 500,
+      height: 298,
+    },
+    extraMeta: [
+      { key: "Company", value: [{ text: "lendflow.com", href: "https://lendflow.com" }] },
+    ],
+    summary:
+      "A new look for Lendflow's website, LinkedIn and illustrations, plus an automation that lets marketing make on-brand illustrations without a designer.",
+    blocks: [
+      {
+        heading: "",
+        sections: [
+          {
+            type: "text",
+            content:
+              "Lendflow is embedded lending infrastructure. It combines a network of 75+ lenders, a unified API, and AI agents that help brands offer credit and help lenders fund faster. Over the last year it made more than $1.5B in offers.",
+          },
+          {
+            type: "text",
+            content:
+              "The website hadn't been updated in years, and it didn't explain what the product does. Another designer and I redesigned it from scratch with a new visual style. Most of our attention went to showing how Lendflow works, because embedded lending is hard to understand from a headline.",
+          },
+          {
+            type: "text",
+            content:
+              "I also made LinkedIn visuals for launches, partnerships and events. For the brand, I created an illustration style and then automated it. The marketing team now makes its own illustrations without waiting on design.",
+          },
+        ],
+      },
+      {
+        heading: "Website",
+        sections: [
+          { type: "image", src: "/website-02.jpg", alt: "Products menu grouping Lendflow Connect, Intelligence and Automate" },
+          { type: "image", src: "/website-03.jpg", alt: "Lending network section with separate tabs for brands and lenders" },
+          { type: "image", src: "/website-04.jpg", alt: "Why Teams Choose Lendflow section with a green demo call-to-action" },
+          { type: "image", src: "/website-05.jpg", alt: "How it works: AI agents around Lendflow Automate, connected by simple APIs" },
+          { type: "image", src: "/website-06.jpg", alt: "Analytics section on dark background with three dashboard cards" },
+          { type: "image", src: "/website-07.jpg", alt: "Ecosystem intelligence section explaining data enrichment beyond traditional data" },
+          { type: "image", src: "/website-08.jpg", alt: "Embed Capital hero with a quick application widget for $170,000" },
+          { type: "image", src: "/website-09.jpg", alt: "Results section with impact numbers and a monthly savings calculator" },
+          { type: "image", src: "/website-10.jpg", alt: "About Us section, Powering the Future of Lending, on dark background" },
+        ],
+      },
+      {
+        heading: "Marketing",
+        sections: [
+          { type: "image", src: "/marketin-01.png", alt: "Monthly Roundup cover for LinkedIn in the brand's green" },
+          { type: "image", src: "/marketin-02.png", alt: "3D illustration of applicant cards sorted by AI agents into approved profiles" },
+          { type: "image", src: "/marketin-03.png", alt: "3D illustration of an AI assistant robot surrounded by data cards" },
+          { type: "image", src: "/marketin-04.png", alt: "3D illustration of a lending network with a bank at the center" },
+          { type: "image", src: "/marketin-05.png", alt: "3D illustration of hexagon icons around a glowing globe" },
+          { type: "image", src: "/marketin-06.png", alt: "3D illustration of an AI chip with a green dollar sign" },
+        ],
+      },
+      {
+        heading: "Automating illustrations",
+        sections: [
+          {
+            type: "text",
+            content:
+              "My earlier illustrations had been running on social media for over a year, so the style was due for a refresh. I combined that update with automation, so the new style wouldn't depend on me to produce every illustration.",
+          },
+          {
+            type: "text",
+            content:
+              "I started with research, then set up a project in ChatGPT and filled it with context about the brand and the new illustration style. I wrote rules and instructions so the results stayed consistent from one request to the next.",
+          },
+          {
+            type: "text",
+            content:
+              "Before handing it over, I tested it until the output was stable. Only then did it go to the marketing team, who now make illustrations on their own.",
+          },
+          { type: "image", src: "/ai-illustration-1.png", alt: "AI-generated illustration of scattered documents running through a machine into structured data" },
+          { type: "image", src: "/ai-illustration-2.png", alt: "AI-generated illustration of a scanner picking one file out of rows of folders" },
+          { type: "image", src: "/ai-illustration-3.png", alt: "AI-generated illustration of a gauge sorting applicants on a conveyor belt" },
+          { type: "image", src: "/ai-illustration-4.png", alt: "AI-generated illustration of a funnel turning a pile of storefronts into a steady line" },
+          { type: "image", src: "/ai-illustration-5.png", alt: "AI-generated illustration of a green API cable plugging into a bank approval card" },
         ],
       },
     ],

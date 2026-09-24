@@ -107,6 +107,11 @@
   line-height: 1.75;
 }
 
+/* Consecutive paragraphs read as one passage: pull 56px down to 20px. */
+.bodyText + .bodyText {
+  margin-top: -36px;
+}
+
 .bodyText strong {
   color: var(--fg);
   font-weight: 500;
@@ -205,4 +210,16 @@
   line-height: 1.75;
   margin-top: -4px;
   margin-bottom: 4px;
+}
+
+
+/* Stand-in plate for a screenshot that hasn't been exported yet. */
+.placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  font-size: var(--text-ui);
+  color: var(--fg-subtle);
 }

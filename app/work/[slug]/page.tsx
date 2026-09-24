@@ -75,10 +75,28 @@ export default async function ProjectPage({ params }: Props) {
               </dd>
             </div>
           )}
-          <div className={styles.metaRow}>
-            <dt className={styles.metaKey}>Year</dt>
-            <dd className={styles.metaValue}>{project.year}</dd>
-          </div>
+          {!project.hideYear && (
+            <div className={styles.metaRow}>
+              <dt className={styles.metaKey}>Year</dt>
+              <dd className={styles.metaValue}>{project.year}</dd>
+            </div>
+          )}
+          {project.extraMeta?.map((row) => (
+            <div key={row.key} className={styles.metaRow}>
+              <dt className={styles.metaKey}>{row.key}</dt>
+              <dd className={styles.metaValue}>
+                {row.value.map((part, i) =>
+                  typeof part === "string" ? (
+                    part
+                  ) : (
+                    <a key={i} href={part.href} target="_blank" rel="noopener noreferrer">
+                      {part.text}
+                    </a>
+                  )
+                )}
+              </dd>
+            </div>
+          ))}
         </dl>
       </header>
 
@@ -250,6 +268,12 @@ export default async function ProjectPage({ params }: Props) {
                         {section.caption && (
                           <p className={styles.caption}>{section.caption}</p>
                         )}
+                      </div>
+                    );
+                  } else if (section.type === "placeholder") {
+                    items.push(
+                      <div key={idx} className={styles.placeholder} role="img" aria-label={section.label}>
+                        {section.label}
                       </div>
                     );
                   } else if (section.type === "subsection") {
