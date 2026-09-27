@@ -15,6 +15,8 @@ type Props = {
   onSelect?: (index: number) => void;
   className?: string;
   wrapClassName?: string;
+  /** Passed through to the image: set for the above-the-fold hero. */
+  priority?: boolean;
 };
 
 export default function ImageLightbox({
@@ -27,6 +29,7 @@ export default function ImageLightbox({
   onSelect,
   className,
   wrapClassName,
+  priority,
 }: Props) {
   const [open, setOpen] = useState(false);
   /* Used only when the caller doesn't own the index (no onSelect), so there is
@@ -62,6 +65,7 @@ export default function ImageLightbox({
                 }`}
                 width={variant.width}
                 height={variant.height}
+                priority={priority}
                 sizes="(max-width: 600px) 100vw, 560px"
               />
             ))}
@@ -73,6 +77,7 @@ export default function ImageLightbox({
             className={className}
             width={current.width}
             height={current.height}
+            priority={priority}
             sizes="(max-width: 600px) 100vw, 560px"
           />
         )}

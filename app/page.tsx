@@ -85,6 +85,8 @@ export default function Home() {
                       alt=""
                       width={p.cardThumb.width}
                       height={p.cardThumb.height}
+                      // Plate is 42% of the 560px column; full width on mobile.
+                      sizes="(max-width: 600px) 100vw, 240px"
                       className={`${styles.projectCardThumb} ${p.cardThumb.fill ? styles.projectCardThumbFill : ""}`}
                     />
                     <Image
@@ -92,6 +94,8 @@ export default function Home() {
                       alt=""
                       width={p.cardThumb.width}
                       height={p.cardThumb.height}
+                      // Plate is 42% of the 560px column; full width on mobile.
+                      sizes="(max-width: 600px) 100vw, 240px"
                       className={`${styles.projectCardThumb} ${p.cardThumb.fill ? styles.projectCardThumbFill : ""} ${styles.projectCardThumbColor}`}
                     />
                   </>

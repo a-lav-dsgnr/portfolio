@@ -9,6 +9,8 @@ type Props = {
   height?: number;
   sizes: string;
   className?: string;
+  /** Above-the-fold (LCP) image: preload it and skip lazy loading. */
+  priority?: boolean;
 };
 
 /* One next/image wrapper for every project image.
@@ -25,12 +27,21 @@ type Props = {
    query on a local src unless images.localPatterns is configured, and the
    optimizer keys on the path anyway. The plain-<img> fallback keeps the query
    so a version bump still busts the browser cache for that image. */
-export default function StaticImage({ src, alt, width, height, sizes, className }: Props) {
+export default function StaticImage({ src, alt, width, height, sizes, className, priority }: Props) {
   const style = { width: "100%", height: "auto" } as const;
 
   if (!width || !height) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} className={className} style={style} />;
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        style={style}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : undefined}
+      />
+    );
   }
 
   return (
@@ -41,6 +52,7 @@ export default function StaticImage({ src, alt, width, height, sizes, className 
       width={width}
       height={height}
       sizes={sizes}
+      priority={priority}
       style={style}
     />
   );

@@ -108,6 +108,8 @@ export default async function ProjectPage({ params }: Props) {
           {...sizeOf(project.heroImage)}
           className={styles.heroImg}
           wrapClassName={styles.heroWrap}
+          // The hero is the page's largest above-the-fold image (LCP).
+          priority
         />
       )}
 
