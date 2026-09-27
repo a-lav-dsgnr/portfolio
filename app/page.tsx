@@ -85,14 +85,14 @@ export default function Home() {
                       alt=""
                       width={p.cardThumb.width}
                       height={p.cardThumb.height}
-                      className={styles.projectCardThumb}
+                      className={`${styles.projectCardThumb} ${p.cardThumb.fill ? styles.projectCardThumbFill : ""}`}
                     />
                     <Image
                       src={p.cardThumb.hover}
                       alt=""
                       width={p.cardThumb.width}
                       height={p.cardThumb.height}
-                      className={`${styles.projectCardThumb} ${styles.projectCardThumbColor}`}
+                      className={`${styles.projectCardThumb} ${p.cardThumb.fill ? styles.projectCardThumbFill : ""} ${styles.projectCardThumbColor}`}
                     />
                   </>
                 )}

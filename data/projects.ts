@@ -37,7 +37,14 @@ export type Project = {
   /** Thumbnail for the project card on the homepage. Falls back to heroImage. */
   cardImage?: string;
   /** Thumbnail shown inside the card plate: grayscale by default, colored on hover. */
-  cardThumb?: { src: string; hover: string; width: number; height: number };
+  cardThumb?: {
+    src: string;
+    hover: string;
+    width: number;
+    height: number;
+    // Cover the whole image plate instead of the default inset crop.
+    fill?: boolean;
+  };
   blocks: ProjectBlock[];
 };
 
@@ -520,10 +527,11 @@ export const projects: Project[] = [
     hideYear: true,
     heroImage: "/website-01.jpg",
     cardThumb: {
-      src: "/lendflow-thumbnail-bw.png",
-      hover: "/lendflow-thumbnail-color.png",
+      src: "/thumbnail-marketing-bw.png",
+      hover: "/thumbnail-marketing-color.png",
       width: 500,
-      height: 298,
+      height: 276,
+      fill: true,
     },
     extraMeta: [
       { key: "Company", value: [{ text: "lendflow.com", href: "https://lendflow.com" }] },
