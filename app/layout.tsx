@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Anastasiia Lavrentii",
     title: siteTitle,
     description: siteDescription,
-    images: [{ url: "/og.jpg", width: 1200, height: 863, alt: siteTitle }],
+    images: [{ url: "/og.jpg", width: 1200, height: 801, alt: siteTitle }],
   },
   twitter: {
     card: "summary_large_image",
