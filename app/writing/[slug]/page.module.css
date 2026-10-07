@@ -1,0 +1,90 @@
+.page {
+  padding-top: 80px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: var(--text-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.meta {
+  font-size: var(--text-ui);
+  color: var(--fg-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.paragraph {
+  font-size: var(--text-body);
+  color: var(--fg-muted);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.paragraph a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--fg-subtle);
+  text-underline-offset: 3px;
+  transition-property: text-decoration-color;
+  transition-duration: 0.15s;
+}
+
+.paragraph a:hover {
+  color: var(--fg);
+  text-decoration-color: var(--fg);
+}
+
+/* Headings open a new part: extra space above, tight to their paragraph. */
+.heading {
+  margin-top: 20px;
+  margin-bottom: -8px;
+  font-size: var(--text-lg);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-block: 12px;
+}
+
+.imageWrap {
+  background: var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  font-size: var(--text-ui);
+  color: var(--fg-subtle);
+  line-height: 1.6;
+}

@@ -5,10 +5,30 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CuelumeBind from "@/components/CuelumeBind";
 
+const siteTitle = "Anastasiia Lavrentii — Product Designer";
+const siteDescription =
+  "Product designer crafting digital products with intention and care.";
+
 export const metadata: Metadata = {
-  title: "Anastasiia Lavrentii — Product Designer",
-  description:
-    "Product designer crafting digital products with intention and care.",
+  metadataBase: new URL("https://ana-lav.vercel.app"),
+  title: siteTitle,
+  description: siteDescription,
+  // Explicit link-preview tags: without them, messengers guess and pick
+  // a random heading and photo from the page.
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Anastasiia Lavrentii",
+    title: siteTitle,
+    description: siteDescription,
+    images: [{ url: "/og.jpg", width: 1200, height: 863, alt: siteTitle }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/og.jpg"],
+  },
 };
 
 export default function RootLayout({

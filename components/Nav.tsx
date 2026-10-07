@@ -126,6 +126,25 @@ export default function Nav() {
     );
   }
 
+  // Articles get the same minimal "Back" header as case studies.
+  if (pathname?.startsWith("/writing/")) {
+    return (
+      <header className={styles.header}>
+        <div className={`container ${styles.inner} ${scrolled ? styles.bordered : ""}`}>
+          <Link
+            href="/#writing"
+            className={styles.navButton}
+            data-cuelume-hover="tick"
+            onClick={(e) => scrollToSection(e, "writing")}
+          >
+            <ArrowLeft />
+            <span>Back</span>
+          </Link>
+        </div>
+      </header>
+    );
+  }
+
   // The homepage leads with its own hero, so it needs no top header.
   if (isHome) return null;
 

@@ -182,6 +182,49 @@
   overflow: hidden;
 }
 
+/* ── WRITING ── */
+.writingList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* Cancel the items' vertical padding so the first title aligns with the section rhythm. */
+  margin-block: -12px;
+}
+
+/* Negative inline margin lets the hover fill bleed past the text column
+   while the text itself stays aligned with the rest of the page. */
+.writingItem {
+  display: flex;
+  flex-direction: column;
+  margin-inline: -12px;
+  padding: 12px;
+  border-radius: 8px;
+  color: var(--fg);
+  text-decoration: none;
+  transition-property: background-color;
+  transition-duration: 0.15s;
+}
+
+.writingItem:hover {
+  color: var(--fg);
+  background-color: var(--surface);
+}
+
+.writingItem:focus-visible {
+  background-color: var(--surface);
+}
+
+.writingTitle {
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+
+.writingDescription {
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+
 /* ── ABOUT ── */
 .aboutGrid {
   display: flex;

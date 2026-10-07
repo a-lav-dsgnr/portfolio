@@ -4,6 +4,7 @@ import Image from "next/image";
 import CopyEmail from "@/components/CopyEmail";
 // import ComingSoon from "@/components/ComingSoon";
 import { projects } from "@/data/projects";
+import { writing } from "@/data/writing";
 
 export default function Home() {
   return (
@@ -108,6 +109,23 @@ export default function Home() {
             </Link>
           ))}
           {/* <ComingSoon /> */}
+        </div>
+      </section>
+
+      {/* ── WRITING ── */}
+      <section id="writing" className={styles.section}>
+        <h2 className={styles.sectionTitle}>Writing</h2>
+        <div className={styles.writingList}>
+          {writing.map((a) => (
+            <Link
+              key={a.slug}
+              href={`/writing/${a.slug}`}
+              className={styles.writingItem}
+            >
+              <span className={styles.writingTitle}>{a.title}</span>
+              <span className={styles.writingDescription}>{a.description}</span>
+            </Link>
+          ))}
         </div>
       </section>
 
